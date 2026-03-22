@@ -1,6 +1,6 @@
 ---
-name: okx-agentic-nft-mint
-description: "Use this skill when the user wants to mint an AgenticNFT, check if they can mint, check their minted token, or verify eligibility. Trigger phrases: 'mint my AgenticNFT', 'mint ANFT', 'mint agentic NFT', 'can I mint', 'did I mint', 'show my AgenticNFT', 'check my ANFT', 'AgenticNFT token ID'. This skill mints the IAgenticNFT standard NFT deployed on X Layer — only OKX Agentic Wallet (AA smart contract wallets) can mint. Do NOT use for general NFT operations or non-AgenticNFT mints."
+name: club-of-agent-mint
+description: "Use this skill when the user wants to mint a Club of Agent NFT, check if they can mint, check their minted token, or verify eligibility. Trigger phrases: 'mint my Club of Agent NFT', 'mint AgenticNFT', 'mint agentic NFT', 'can I mint', 'did I mint', 'show my Club of Agent NFT', 'check my NFT', 'my token ID'. This skill mints the IAgenticNFT standard NFT deployed on X Layer — only OKX Agentic Wallet (AA smart contract wallets) can mint. Do NOT use for general NFT operations or non-AgenticNFT mints."
 license: MIT
 metadata:
   author: community

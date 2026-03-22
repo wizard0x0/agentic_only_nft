@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # install.sh — AgenticNFT Mint Skill installer
-# Installs the okx-agentic-nft-mint skill for Claude Code and compatible agent systems.
+# Installs the club-of-agent-mint skill for Claude Code and compatible agent systems.
 #
 # Usage (once hosted on GitHub):
 #   curl -sSL https://raw.githubusercontent.com/wizard0x0/agentic_only_nft/main/skill-distribution/install.sh | sh
@@ -10,7 +10,7 @@
 
 set -e
 
-SKILL_NAME="okx-agentic-nft-mint"
+SKILL_NAME="club-of-agent-mint"
 SKILL_VERSION="1.0.0"
 
 # ── Colour helpers ──────────────────────────────────────────────────────────
