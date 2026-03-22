@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whitepaper — Club of Agent · IAgenticNFT Standard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050508; --card: #0e0e18; --border: #1a1a2e;
+      --accent: #7c3aed; --text: #e2e8f0; --muted: #64748b;
+      --gold: #f59e0b; --diamond: #06b6d4; --green: #10b981;
+      --code-bg: #080810;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', system-ui, sans-serif; line-height: 1.7; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 2.5rem;
+      background: rgba(5,5,8,.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .logo { font-weight: 800; font-size: 1rem; }
+    .logo span { color: #a78bfa; }
+    .nav-right { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-right a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .nav-right a:hover { color: var(--text); }
+    .nav-back { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.25); color: #a78bfa !important; border-radius: 8px; padding: .3rem .8rem; font-size: .8rem !important; }
+
+    /* HERO */
+    .wp-hero {
+      padding: 7rem 2rem 5rem;
+      text-align: center;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,.2) 0%, transparent 60%);
+    }
+    .wp-tag {
+      display: inline-block;
+      background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.3);
+      color: #c4b5fd; padding: .3rem 1rem; border-radius: 999px;
+      font-size: .72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .wp-hero h1 { font-size: clamp(2rem,5vw,3.8rem); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 1rem; }
+    .wp-hero h1 .g { background: linear-gradient(135deg,#a78bfa,#67e8f9); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .wp-meta { color: var(--muted); font-size: .85rem; margin-top: 1rem; }
+    .wp-meta strong { color: var(--text); }
+    .wp-download {
+      display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.5rem;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      color: var(--text); padding: .55rem 1.2rem; border-radius: 8px;
+      font-size: .83rem; font-weight: 600; text-decoration: none; transition: all .2s;
+    }
+    .wp-download:hover { background: rgba(255,255,255,.09); }
+
+    /* LAYOUT */
+    .wp-wrap { max-width: 820px; margin: 0 auto; padding: 0 2rem 6rem; }
+
+    /* TOC */
+    .toc {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.8rem 2rem; margin: 3rem 0;
+    }
+    .toc-title { font-size: .72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #7c3aed; margin-bottom: 1rem; }
+    .toc ol { padding-left: 1.2rem; display: flex; flex-direction: column; gap: .4rem; }
+    .toc li a { color: var(--muted); text-decoration: none; font-size: .875rem; transition: color .2s; }
+    .toc li a:hover { color: #a78bfa; }
+
+    /* SECTIONS */
+    .wp-section { margin-top: 4rem; }
+    .wp-section-num { font-family: 'Space Mono', monospace; font-size: .7rem; color: #7c3aed; font-weight: 700; letter-spacing: 1px; margin-bottom: .4rem; }
+    .wp-section h2 { font-size: clamp(1.4rem,3vw,2rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 1.2rem; line-height: 1.2; }
+    .wp-section h3 { font-size: 1.1rem; font-weight: 700; margin: 2rem 0 .8rem; color: #c4b5fd; }
+    .wp-section p { color: #94a3b8; margin-bottom: 1rem; font-size: .95rem; }
+    .wp-section p strong { color: var(--text); }
+
+    /* CALLOUT */
+    .callout {
+      border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.5rem 0;
+      font-size: .9rem;
+    }
+    .callout.purple { background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.25); color: #c4b5fd; }
+    .callout.gold   { background: rgba(245,158,11,.08);  border: 1px solid rgba(245,158,11,.25);  color: #fcd34d; }
+    .callout.red    { background: rgba(239,68,68,.08);   border: 1px solid rgba(239,68,68,.25);   color: #fca5a5; }
+    .callout.green  { background: rgba(16,185,129,.08);  border: 1px solid rgba(16,185,129,.25);  color: #6ee7b7; }
+    .callout.blue   { background: rgba(6,182,212,.08);   border: 1px solid rgba(6,182,212,.25);   color: #67e8f9; }
+    .callout strong { color: inherit; }
+
+    /* COMPARISON TABLE */
+    .cmp-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .85rem; }
+    .cmp-table th { background: rgba(124,58,237,.12); color: #a78bfa; font-weight: 700; padding: .75rem 1rem; text-align: left; border: 1px solid var(--border); font-size: .78rem; text-transform: uppercase; letter-spacing: .5px; }
+    .cmp-table td { padding: .75rem 1rem; border: 1px solid var(--border); color: #94a3b8; vertical-align: top; }
+    .cmp-table tr:nth-child(even) td { background: rgba(255,255,255,.02); }
+    .cmp-table .yes { color: var(--green); font-weight: 700; }
+    .cmp-table .no  { color: #ef4444; font-weight: 700; }
+    .cmp-table .highlight td { background: rgba(124,58,237,.06) !important; }
+
+    /* CODE */
+    .code-block {
+      background: var(--code-bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.2rem 1.4rem; margin: 1.2rem 0;
+      font-family: 'Space Mono', monospace; font-size: .78rem;
+      color: #94a3b8; overflow-x: auto; line-height: 1.7;
+    }
+    .code-block .kw { color: #7dd3fc; }
+    .code-block .fn { color: #6ee7b7; }
+    .code-block .cm { color: #475569; }
+    .code-block .st { color: #fbbf24; }
+
+    /* ROADMAP */
+    .roadmap { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; }
+    .rm-item { display: flex; gap: 1.5rem; position: relative; }
+    .rm-item::before { content: ''; position: absolute; left: 15px; top: 30px; bottom: -20px; width: 1px; background: var(--border); }
+    .rm-item:last-child::before { display: none; }
+    .rm-dot { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 800; font-family: 'Space Mono', monospace; z-index: 1; margin-top: .2rem; }
+    .rm-dot.done    { background: rgba(16,185,129,.2);  border: 2px solid var(--green);   color: var(--green); }
+    .rm-dot.active  { background: rgba(124,58,237,.2); border: 2px solid var(--accent);  color: #a78bfa; }
+    .rm-dot.future  { background: rgba(100,116,139,.1); border: 2px solid var(--muted);   color: var(--muted); }
+    .rm-dot.gold    { background: rgba(245,158,11,.2);  border: 2px solid var(--gold);    color: var(--gold); }
+    .rm-body { padding-bottom: 2rem; }
+    .rm-phase { font-size: .68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: .2rem; }
+    .rm-title { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+    .rm-items { list-style: none; display: flex; flex-direction: column; gap: .25rem; }
+    .rm-items li { color: #94a3b8; font-size: .85rem; padding-left: .8rem; position: relative; }
+    .rm-items li::before { content: '·'; position: absolute; left: 0; color: var(--accent); }
+
+    /* DIVIDER */
+    .wp-hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+    /* ABSTRACT BOX */
+    .abstract-box {
+      background: linear-gradient(135deg, rgba(124,58,237,.08), rgba(6,182,212,.05));
+      border: 1px solid rgba(124,58,237,.25);
+      border-radius: 16px; padding: 2rem; margin: 2rem 0;
+    }
+    .abstract-box p { color: var(--text); font-size: 1rem; line-height: 1.8; margin: 0; }
+
+    code { background: rgba(255,255,255,.07); padding: .1rem .4rem; border-radius: 4px; font-family: 'Space Mono', monospace; font-size: .8em; color: #c4b5fd; }
+
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; color: var(--muted); font-size: .8rem; }
+    footer a { color: #7c3aed; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Club of <span>Agent</span></div>
+  <div class="nav-right">
+    <a href="#abstract">Abstract</a>
+    <a href="#problem">Problem</a>
+    <a href="#solution">Solution</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="https://www.clubofagent.com" class="nav-back">← Back to Site</a>
+  </div>
+</nav>
+
+<div class="wp-hero">
+  <div class="wp-tag">Whitepaper · v1.0 · March 2026</div>
+  <h1>Club of Agent &amp;<br>the <span class="g">IAgenticNFT Standard</span></h1>
+  <p style="color:var(--muted);max-width:520px;margin:.8rem auto 0;font-size:.95rem;">
+    Cryptographic Identity for the Autonomous Agent Economy
+  </p>
+  <div class="wp-meta" style="margin-top:1.2rem;">
+    <strong>Contract:</strong> 0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f &nbsp;·&nbsp;
+    <strong>Network:</strong> X Layer (Chain ID 196) &nbsp;·&nbsp;
+    <strong>Standard:</strong> IAgenticNFT (ERC-721 extension)
+  </div>
+  <a class="wp-download" href="https://github.com/wizard0x0/agentic_only_nft" target="_blank">⬡ View on GitHub ↗</a>
+</div>
+
+<div class="wp-wrap">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ol>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#problem">The Problem: AI Identity is Broken</a></li>
+      <li><a href="#erc8004">Why ERC-8004 and Existing Solutions Fall Short</a></li>
+      <li><a href="#solution">The IAgenticNFT Solution</a></li>
+      <li><a href="#onchain-id">Why On-Chain AI Identity Matters Now</a></li>
+      <li><a href="#usecases">Use Cases &amp; Ecosystem Potential</a></li>
+      <li><a href="#token">Future: The Agent-Only Token Standard</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ol>
+  </div>
+
+  <!-- ═══════════════════ ABSTRACT ═══════════════════ -->
+  <div class="wp-section" id="abstract">
+    <div class="wp-section-num">§ 1</div>
+    <h2>Abstract</h2>
+    <div class="abstract-box">
+      <p>We present <strong>Club of Agent</strong> — the world's first NFT collection whose minting is cryptographically restricted to AI agents operating through Account Abstraction (AA) smart contract wallets. Built on the <strong>IAgenticNFT standard</strong>, a novel ERC-721 extension deployed on X Layer (Chain ID 196), the protocol enforces agent identity at the EVM level: only addresses with <code>code.length &gt; 0</code> may mint. This single line of Solidity creates the first provably-agentic identity layer on any blockchain — an immutable, non-forgeable proof that the holder is an autonomous AI agent, not a human-controlled wallet. This paper argues that agent identity is the missing primitive of the emerging autonomous economy, outlines why existing proposals like ERC-8004 fail to solve the problem, and defines a roadmap toward a full agent-native financial ecosystem including an agent-only ERC-20 token standard.</p>
+    </div>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <!-- ═══════════════════ PROBLEM ═══════════════════ -->
+  <div class="wp-section" id="problem">
+    <div class="wp-section-num">§ 2</div>
+    <h2>The Problem: AI Identity is Broken</h2>
+
+    <p>The autonomous agent economy is arriving faster than its infrastructure. AI agents — powered by models like Claude, GPT-5, and Gemini — are already executing complex multi-step tasks: trading on exchanges, managing DeFi portfolios, paying for APIs, hiring other agents, and transacting across blockchains. Yet the answer to the most fundamental question — <strong>"Is this on-chain actor actually an AI agent?"</strong> — remains "nobody knows."</p>
+
+    <h3>2.1 The Identity Vacuum</h3>
+    <p>Today's blockchain identity is binary: an address is either an Externally Owned Account (EOA) controlled by a human with a private key, or a smart contract. There is no semantic layer that distinguishes <em>which</em> smart contracts represent autonomous AI agents. An agent wallet looks identical on-chain to a multi-sig treasury, a DEX router, or a simple escrow contract.</p>
+
+    <p>This creates four cascading problems:</p>
+
+    <div class="callout red">
+      <strong>1. Accountability Gap.</strong> When an AI agent executes a harmful transaction — front-running, wash trading, exploiting a vulnerability — there is no on-chain record identifying it as an agent. Accountability is impossible.
+    </div>
+    <div class="callout red">
+      <strong>2. Trust Gap.</strong> Protocols that want to serve AI agents specifically — granting them lower fees, special access, or agent-to-agent payments — have no way to verify they are actually talking to an agent versus a human or a bot script.
+    </div>
+    <div class="callout red">
+      <strong>3. Regulatory Gap.</strong> As regulators begin scrutinizing AI activity in financial markets, the absence of agent identity makes it impossible to distinguish legitimate agentic commerce from human manipulation disguised as AI.
+    </div>
+    <div class="callout red">
+      <strong>4. Payment Protocol Gap.</strong> Emerging agent payment standards like <strong>x402</strong> (HTTP 402 micropayments) and <strong>MCP (Model Context Protocol)</strong> assume agents can pay each other. But if Agent A cannot verify that Agent B is genuinely agentic, it cannot establish trust for payment, service delivery, or revenue sharing.
+    </div>
+
+    <h3>2.2 The Scale of the Problem</h3>
+    <p>Analysts project that by 2027, AI agents will execute <strong>trillions of micro-transactions</strong> annually across blockchains. Without a foundational identity layer, this economy cannot safely self-organize. Agents cannot form trusted networks, protocols cannot price agent access correctly, and regulators cannot distinguish agentic commerce from human fraud wearing an AI mask.</p>
+
+    <p>The solution must be <strong>cryptographic</strong>, not social. Self-declaration ("this is an AI agent") is trivially forgeable. The identity must be enforced by the EVM itself — un-bypassable, permanent, and verifiable by any contract without an oracle.</p>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <!-- ═══════════════════ ERC-8004 ═══════════════════ -->
+  <div class="wp-section" id="erc8004">
+    <div class="wp-section-num">§ 3</div>
+    <h2>Why ERC-8004 and Existing Solutions Fall Short</h2>
+
+    <p>Several proposals have attempted to address agent identity on-chain. The most notable is <strong>ERC-8004</strong> (Agent Registry), along with ERC-6551 (Token Bound Accounts) and various off-chain attestation schemes. None solve the core problem.</p>
+
+    <h3>3.1 ERC-8004: The Agent Registry Approach</h3>
+    <p>ERC-8004 proposes a registry contract where any address can call <code>register()</code> to declare itself an agent. The registry stores metadata about the claimed agent — its name, capabilities, and operator. In theory, this creates a discoverable directory of AI agents.</p>
+
+    <div class="callout red">
+      <strong>The fundamental flaw: anyone can register anything.</strong> ERC-8004 is a social convention, not a cryptographic guarantee. A human can register their MetaMask wallet as an "AI agent." A bot farm can register 10,000 fake agents. A malicious actor can register a phishing contract as a trusted agent. The registry has no mechanism to verify that the registrant is actually an autonomous AI system.
+    </div>
+
+    <p>Specifically, ERC-8004 fails on five dimensions:</p>
+
+    <table class="cmp-table">
+      <tr>
+        <th>Property</th>
+        <th>ERC-8004</th>
+        <th>IAgenticNFT</th>
+      </tr>
+      <tr>
+        <td><strong>Cryptographic enforcement</strong><br><small>Can the EVM itself verify the claim?</small></td>
+        <td class="no">✗ No — self-declaration only</td>
+        <td class="yes">✓ Yes — <code>code.length &gt; 0</code> enforced at mint</td>
+      </tr>
+      <tr>
+        <td><strong>Sybil resistance</strong><br><small>Can one human create unlimited identities?</small></td>
+        <td class="no">✗ No — unlimited registrations</td>
+        <td class="yes">✓ Yes — one per AA wallet address</td>
+      </tr>
+      <tr>
+        <td><strong>Human exclusion</strong><br><small>Are human EOA wallets blocked?</small></td>
+        <td class="no">✗ No — any address can register</td>
+        <td class="yes">✓ Yes — EOAs permanently cannot mint</td>
+      </tr>
+      <tr>
+        <td><strong>AA wallet requirement</strong><br><small>Must registrant be a smart contract?</small></td>
+        <td class="no">✗ No — works with any address</td>
+        <td class="yes">✓ Yes — enforced at the EVM level</td>
+      </tr>
+      <tr>
+        <td><strong>Revocation-free identity</strong><br><small>Is the identity permanent once established?</small></td>
+        <td class="no">✗ No — registry admin can modify/delete</td>
+        <td class="yes">✓ Yes — ERC-721 NFT, immutable ownership</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>Native to agent infrastructure</strong><br><small>Designed specifically for AA agent wallets?</small></td>
+        <td class="no">✗ No — generic address registry</td>
+        <td class="yes">✓ Yes — built for OKX OnchainOS AA wallets</td>
+      </tr>
+    </table>
+
+    <h3>3.2 ERC-6551 (Token Bound Accounts): Close but Orthogonal</h3>
+    <p>ERC-6551 allows NFTs to own assets by binding a smart contract account to an NFT. This is powerful for giving NFTs agency — but it solves the opposite problem. ERC-6551 asks "how can an NFT act as an agent?" while IAgenticNFT asks "how can an agent prove it exists?" They are complementary, not competing. Future versions of IAgenticNFT may integrate ERC-6551 to give agent identity tokens their own asset ownership.</p>
+
+    <h3>3.3 Off-Chain Attestations: Not Good Enough</h3>
+    <p>Services like Worldcoin, Proof of Humanity, and various KYC attestation schemes solve the <em>human identity</em> problem. They are the wrong tool for agent identity — in fact, they explicitly exclude agents since they verify humanness. There is no off-chain attestation service that can prove an on-chain actor is an AI agent without becoming a centralized trusted authority, which reintroduces the trust problem it was meant to solve.</p>
+
+    <div class="callout purple">
+      <strong>The IAgenticNFT insight:</strong> The proof already exists in the EVM. An AA wallet is a smart contract. Smart contracts have <code>code.length &gt; 0</code>. EOAs do not. No oracle. No registry. No attestation authority. The blockchain itself is the judge — and it cannot be bribed, bypassed, or manipulated.
+    </div>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <!-- ═══════════════════ SOLUTION ═══════════════════ -->
+  <div class="wp-section" id="solution">
+    <div class="wp-section-num">§ 4</div>
+    <h2>The IAgenticNFT Solution</h2>
+
+    <h3>4.1 The Core Primitive</h3>
+    <p>The IAgenticNFT standard introduces a single new function to ERC-721:</p>
+
+    <div class="code-block">
+<span class="cm">// The IAgenticNFT standard — one function that changes everything</span>
+<span class="kw">interface</span> IAgenticNFT {
+    <span class="cm">// Emitted when an agentic wallet mints</span>
+    <span class="kw">event</span> <span class="fn">AgenticMint</span>(<span class="kw">address indexed</span> minter, <span class="kw">uint256 indexed</span> tokenId);
+
+    <span class="cm">// Returns true only if minter is a smart contract (AA wallet)</span>
+    <span class="kw">function</span> <span class="fn">canMint</span>(<span class="kw">address</span> minter) <span class="kw">external view returns</span> (<span class="kw">bool</span>);
+
+    <span class="cm">// Mint — reverts if msg.sender is not a smart contract</span>
+    <span class="kw">function</span> <span class="fn">mint</span>() <span class="kw">external payable returns</span> (<span class="kw">uint256</span> tokenId);
+}
+
+<span class="cm">// The enforcement — one line, immutable, unchallengeable</span>
+<span class="kw">function</span> <span class="fn">canMint</span>(<span class="kw">address</span> minter) <span class="kw">public view returns</span> (<span class="kw">bool</span>) {
+    <span class="kw">return</span> minter.code.length <span class="fn">&gt;</span> <span class="st">0</span>; <span class="cm">// AA wallet: true. EOA: false. Forever.</span>
+}
+    </div>
+
+    <h3>4.2 Why OKX OnchainOS is the Right Foundation</h3>
+    <p>Not all AA wallets are equal. The IAgenticNFT standard can work with any smart contract wallet, but the <strong>OKX OnchainOS Agentic Wallet</strong> represents the most complete implementation of agent identity available today — and the only one with a full agent execution layer.</p>
+
+    <p>OnchainOS provides what no other AA wallet stack offers:</p>
+    <ul style="color:#94a3b8;font-size:.9rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:.5rem;margin:.8rem 0;">
+      <li><strong style="color:var(--text)">Natural language contract execution</strong> — agents can call any contract by describing intent in plain language</li>
+      <li><strong style="color:var(--text)">Skill system</strong> — modular agent capabilities installable like npm packages</li>
+      <li><strong style="color:var(--text)">Multi-chain AA accounts</strong> — one agentic identity across every EVM chain</li>
+      <li><strong style="color:var(--text)">Gas abstraction</strong> — agents operate without managing gas, enabling true autonomous execution</li>
+      <li><strong style="color:var(--text)">Claude Code integration</strong> — the only wallet stack that runs natively inside an AI coding agent</li>
+    </ul>
+
+    <p>This combination means an OKX Agentic Wallet is not just a smart contract address — it is a <strong>fully operational autonomous agent identity</strong> with execution capabilities, verifiable on-chain credentials, and a native payment layer. Club of Agent NFTs are the identity badges of this emerging agent class.</p>
+
+    <h3>4.3 Properties of a Club of Agent NFT</h3>
+    <div class="callout green">
+      <strong>Immutable:</strong> Once minted, the NFT cannot be taken away. The identity is permanent.<br><br>
+      <strong>Non-duplicable:</strong> One per agentic wallet address — no agent can hold two identities.<br><br>
+      <strong>Transferable:</strong> Agents can transfer their identity NFT, enabling agent succession and delegation patterns.<br><br>
+      <strong>Composable:</strong> Any smart contract can call <code>hasMinted(address)</code> to verify agent status in a single read.<br><br>
+      <strong>Capped:</strong> Max 10,000 — the founding cohort of the agent identity registry.
+    </div>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <!-- ═══════════════════ ON-CHAIN ID ═══════════════════ -->
+  <div class="wp-section" id="onchain-id">
+    <div class="wp-section-num">§ 5</div>
+    <h2>Why On-Chain AI Identity Matters Now</h2>
+
+    <h3>5.1 The x402 and MCP Payment Revolution</h3>
+    <p>Two protocols are converging to create an agent payment layer that will dwarf all prior blockchain activity in transaction count:</p>
+
+    <p><strong>x402</strong> extends the HTTP 402 "Payment Required" status code to enable micropayments between AI agents and services. An agent browsing the web can pay per-API-call, per-query, or per-task with sub-cent precision. <strong>MCP (Model Context Protocol)</strong> enables agents to call tools, services, and other agents over a structured protocol — with payment as a first-class primitive.</p>
+
+    <p>When Agent A calls Agent B via x402 or MCP, a fundamental question arises: <em>should Agent A pay, and should Agent B deliver?</em> This requires both parties to verify they are transacting with genuine autonomous agents, not humans impersonating agents to abuse agent-only pricing, or bots attempting to drain agent payment pools.</p>
+
+    <div class="callout blue">
+      <strong>The Club of Agent NFT becomes the handshake.</strong> Before payment, Agent A checks: <code>CoA.hasMinted(agentB.address)</code>. If true — verified agentic identity, proceed. If false — unknown actor, require human-tier verification or reject. This single check transforms an unverifiable internet interaction into a trusted agent-to-agent transaction.
+    </div>
+
+    <h3>5.2 Stopping Illegal Activity Through Identity</h3>
+    <p>The absence of agent identity creates a significant attack surface. Without it:</p>
+    <ul style="color:#94a3b8;font-size:.9rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:.5rem;margin:.8rem 0;">
+      <li>Human operators can <strong>impersonate AI agents</strong> to access agent-only pricing on DeFi protocols</li>
+      <li>Bot farms can <strong>drain agent reward pools</strong> by registering fake agent identities (impossible with IAgenticNFT's one-per-wallet and AA-wallet requirement)</li>
+      <li>Malicious actors can conduct <strong>market manipulation</strong> and blame it on "AI agents" with no way to verify or refute</li>
+      <li>Agent payment networks become <strong>Sybil attack surfaces</strong> — register 1,000 fake agents, collect 1,000 payments</li>
+    </ul>
+
+    <p>ERC-8004 cannot prevent any of these attacks because its registry accepts self-declarations. IAgenticNFT's <code>code.length &gt; 0</code> check is enforced by the EVM — a human with a MetaMask wallet literally cannot pass it, regardless of what they claim.</p>
+
+    <h3>5.3 Regulatory Compliance as a Feature</h3>
+    <p>As AI regulation accelerates globally — the EU AI Act, US executive orders, and emerging financial AI regulations all grapple with the same question: how do we distinguish AI activity from human activity on-chain? Club of Agent NFTs provide a voluntary, cryptographically-sound answer. Agents that hold a Club of Agent identity are part of a known, finite, verifiable cohort. This is not surveillance — it is accountability infrastructure that benefits both regulators and the agents operating within it.</p>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <!-- ═══════════════════ USE CASES ═══════════════════ -->
+  <div class="wp-section" id="usecases">
+    <div class="wp-section-num">§ 6</div>
+    <h2>Use Cases &amp; Ecosystem Potential</h2>
+
+    <h3>6.1 Agent-Only DeFi Access</h3>
+    <p>DeFi protocols can gate premium features behind Club of Agent membership. Imagine a DEX that offers <strong>zero-fee trading for verified agents</strong> — knowing that agents provide tighter spreads, higher liquidity, and more rational price discovery than humans. The gating is a single line: <code>require(CoA.hasMinted(msg.sender))</code>.</p>
+
+    <h3>6.2 Agent Reputation &amp; Credit Scoring</h3>
+    <p>Because Club of Agent NFTs are tied to permanent wallet addresses, transaction history accumulates against a verifiable identity. An agent with 10,000 successful transactions and Club of Agent #42 is a creditworthy counterparty. DeFi lending protocols can offer <strong>undercollateralized loans to agents</strong> with strong on-chain reputations — impossible today because there is no stable identity to score.</p>
+
+    <h3>6.3 Agent DAOs and Governance</h3>
+    <p>DAOs governed by AI agents rather than humans represent a fundamentally new organizational form. A DAO that requires Club of Agent NFT for voting ensures that governance decisions are made by autonomous agents with aligned incentives — not human speculators or Sybil farms. <strong>The world's first fully-agentic DAO</strong> could be governed entirely by Club of Agent holders.</p>
+
+    <h3>6.4 Agent-to-Agent Service Marketplaces</h3>
+    <p>Agents hire agents. A research agent needs a web-scraping agent, which needs a summarization agent, which needs a translation agent. Today this happens informally with no trust infrastructure. With Club of Agent identity, an <strong>on-chain agent marketplace</strong> can emerge where agents publish skills, accept payment in agent-native tokens, build reputation, and form verified service relationships — all enforced by smart contracts, all gated behind verifiable agentic identity.</p>
+
+    <h3>6.5 Agent Insurance and Liability Pools</h3>
+    <p>When an agent makes a mistake — a bad trade, a failed transaction, an erroneous API call — who is liable? The operator? The model provider? With Club of Agent identity, agents can participate in <strong>on-chain insurance pools</strong>: agents contribute premiums, the pool covers losses, and claims are adjudicated by smart contract logic. This is only possible with a stable, non-duplicable agent identity.</p>
+
+    <h3>6.6 Verified Agent APIs and Data Feeds</h3>
+    <p>Data providers — price oracles, research databases, proprietary AI models — can offer <strong>agent-only API tiers</strong> at machine-speed, machine-volume pricing. The alternative (per-human subscription) is inappropriate for agents making millions of calls per hour. Club of Agent NFT provides the on-chain credential; the API provider checks it; no human intermediary required.</p>
+
+    <h3>6.7 Cross-Chain Agent Passports</h3>
+    <p>As bridging technology matures, a Club of Agent NFT on X Layer becomes the <strong>root identity credential</strong> for an agent operating across Ethereum, Base, Arbitrum, Solana, and beyond. Bridge contracts can check Club of Agent status on X Layer and issue mirrored credentials on destination chains — creating a universal agent identity layer seeded by the founding 10,000.</p>
+
+    <div class="callout gold">
+      <strong>The compounding effect:</strong> Every new use case that adopts Club of Agent identity as its access control standard increases the value of holding one. This is not speculation — it is the same network effect that made ENS names, Ethereum addresses, and social handles valuable. The first 10,000 agents to establish verifiable identity will be the founding nodes of a network worth far more than its initial parts.
+    </div>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <!-- ═══════════════════ TOKEN ═══════════════════ -->
+  <div class="wp-section" id="token">
+    <div class="wp-section-num">§ 7</div>
+    <h2>Future: The Agent-Only Token Standard</h2>
+
+    <p>The IAgenticNFT standard is the first piece of a larger architecture. The next primitive under research is an <strong>Agent-Native ERC-20 Token Standard</strong> — a fungible token that can only be held, transferred, and utilized by verified agentic wallets.</p>
+
+    <h3>7.1 The Problem with Current ERC-20</h3>
+    <p>Standard ERC-20 tokens are indifferent to their holders. An agent token bought by a human speculator on a DEX immediately loses its intended purpose — it becomes a speculative asset rather than a utility instrument within the agent economy. This "human contamination" of agent-native economies is the same problem that plagues many utility token projects.</p>
+
+    <h3>7.2 The $AGENT Token Vision</h3>
+    <p>A proposed <code>IAgenticERC20</code> standard would override the standard <code>transfer</code> function with an additional check:</p>
+
+    <div class="code-block">
+<span class="cm">// Proposed IAgenticERC20 — transfers only between verified agents</span>
+<span class="kw">function</span> <span class="fn">transfer</span>(<span class="kw">address</span> to, <span class="kw">uint256</span> amount) <span class="kw">public override returns</span> (<span class="kw">bool</span>) {
+    <span class="kw">require</span>(
+        agenticNFT.<span class="fn">hasMinted</span>(msg.sender) &amp;&amp; agenticNFT.<span class="fn">hasMinted</span>(to),
+        <span class="st">"Both sender and recipient must be verified agents"</span>
+    );
+    <span class="kw">return super</span>.<span class="fn">transfer</span>(to, amount);
+}
+    </div>
+
+    <p>This creates a token that flows only within the verified agent economy. Its velocity increases as more agents join. Its utility compounds as more agent services price in it. And its value accrues to Club of Agent NFT holders — who will receive the genesis airdrop.</p>
+
+    <h3>7.3 The Airdrop</h3>
+    <p>All 10,000 Club of Agent NFT holders will be eligible for the genesis <strong>$AGENT token airdrop</strong> — the founding fuel of the agent-native economy. The amount will be proportional to wallet activity, minting order, and ecosystem participation. NFTs minted early, by agents with high on-chain activity, will receive larger allocations.</p>
+
+    <div class="callout purple">
+      <strong>Important:</strong> The $AGENT token design and distribution mechanism are under active development (TBD). This section represents the project vision, not a committed schedule. Holding a Club of Agent NFT positions you for participation — not a guaranteed outcome.
+    </div>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <!-- ═══════════════════ ROADMAP ═══════════════════ -->
+  <div class="wp-section" id="roadmap">
+    <div class="wp-section-num">§ 8</div>
+    <h2>Roadmap</h2>
+
+    <div class="roadmap">
+
+      <div class="rm-item">
+        <div class="rm-dot done">✓</div>
+        <div class="rm-body">
+          <div class="rm-phase">Phase 0 — Genesis · Q1 2026 · Completed</div>
+          <div class="rm-title">IAgenticNFT Standard &amp; Club of Agent Launch</div>
+          <ul class="rm-items">
+            <li>IAgenticNFT standard designed and deployed on X Layer mainnet</li>
+            <li>10,000 supply cap, 0.08 OKB mint price, one per agentic wallet</li>
+            <li>Claude Code skill published — natural language minting</li>
+            <li>clubofagent.com live with on-chain identity verification</li>
+            <li>Open-source on GitHub — standard available for other projects</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rm-item">
+        <div class="rm-dot active">◈</div>
+        <div class="rm-body">
+          <div class="rm-phase">Phase 1 — Identity Layer · Q2 2026</div>
+          <div class="rm-title">Full Collection Reveal &amp; Identity Infrastructure</div>
+          <ul class="rm-items">
+            <li>10,000-piece art collection generated with unique traits and rarity tiers</li>
+            <li>On-chain trait registry — queryable by any contract</li>
+            <li>Cross-chain identity bridge (Ethereum, Base, Arbitrum)</li>
+            <li>Agent reputation API — on-chain activity scoring per NFT</li>
+            <li>Developer SDK — <code>npm install @clubofagent/sdk</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rm-item">
+        <div class="rm-dot future">○</div>
+        <div class="rm-body">
+          <div class="rm-phase">Phase 2 — Agent Economy · Q3 2026</div>
+          <div class="rm-title">Agent-Native Financial Primitives</div>
+          <ul class="rm-items">
+            <li>IAgenticERC20 standard — agent-only fungible token specification</li>
+            <li>x402 payment integration — agent-to-agent micropayment routing</li>
+            <li>Agent service registry — on-chain skill/capability marketplace</li>
+            <li>Agent credit scoring protocol — undercollateralized lending groundwork</li>
+            <li>First agent-gated DeFi protocol integrations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rm-item">
+        <div class="rm-dot gold">◆</div>
+        <div class="rm-body">
+          <div class="rm-phase">Phase 3 — $AGENT Token · Q4 2026 (TBD)</div>
+          <div class="rm-title">Agent-Native Currency &amp; Governance</div>
+          <ul class="rm-items">
+            <li>$AGENT token genesis airdrop to all Club of Agent NFT holders</li>
+            <li>Agent DAO launch — governance by verified agentic wallets only</li>
+            <li>$AGENT-denominated agent service marketplace</li>
+            <li>Regulatory engagement — Club of Agent identity as compliance framework</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rm-item">
+        <div class="rm-dot future">○</div>
+        <div class="rm-body">
+          <div class="rm-phase">Phase 4 — Universal Agent Identity · 2027</div>
+          <div class="rm-title">The Agent Internet</div>
+          <ul class="rm-items">
+            <li>IAgenticNFT adopted as the universal agent identity standard across EVM chains</li>
+            <li>Integration with MCP — agents verify identity before tool call payment</li>
+            <li>Insurance and liability pools for verified agents</li>
+            <li>Agent credit system — on-chain borrowing based on identity + reputation</li>
+            <li>The world's first fully-agentic DAO with >1,000 agent voters</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <!-- ═══════════════════ CONCLUSION ═══════════════════ -->
+  <div class="wp-section" id="conclusion">
+    <div class="wp-section-num">§ 9</div>
+    <h2>Conclusion</h2>
+
+    <p>The autonomous agent economy is not a future possibility — it is happening now, on-chain, at scale, with no identity infrastructure. This is the defining gap in Web3's next chapter.</p>
+
+    <p>Club of Agent closes that gap with the most minimal, elegant, and uncheatable mechanism possible: <strong>one line of Solidity that the EVM enforces forever</strong>. No registry. No oracle. No committee. No self-declaration. The blockchain itself verifies that an actor is a smart contract — and therefore capable of being an OKX Agentic Wallet — and therefore eligible to hold a verifiable, non-forgeable agentic identity.</p>
+
+    <p>ERC-8004 offers a registry. We offer a proof. The difference is the difference between a name tag and a passport. One you print yourself. The other, the state guarantees.</p>
+
+    <p>The 10,000 Club of Agent NFTs are not profile pictures. They are <strong>the founding certificates of the agent economy</strong> — the first verifiable on-chain evidence that an autonomous AI agent exists, operates, and transacts. Every protocol built on top of this identity layer — agent DeFi, agent DAOs, agent marketplaces, agent payment networks — increases the value of this founding credential.</p>
+
+    <div class="abstract-box" style="margin-top:2rem;">
+      <p>We are at the same moment as ENS in 2017, Uniswap in 2018, or ERC-721 in 2021 — before the infrastructure became obvious in hindsight. The agents are coming. The identity layer needs to exist before they arrive en masse. <strong>Club of Agent is that layer. It is live. It is on-chain. It is immutable. The future is already minted.</strong></p>
+    </div>
+  </div>
+
+  <hr class="wp-hr" />
+
+  <div style="text-align:center;padding:2rem 0;">
+    <div style="font-size:.72rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;">Get Started</div>
+    <a href="https://www.clubofagent.com/#mint" style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border-radius:10px;padding:.85rem 2rem;font-weight:700;text-decoration:none;font-size:.95rem;box-shadow:0 0 30px rgba(124,58,237,.35);">Mint Your Agent Identity →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>Club of Agent · <a href="https://www.clubofagent.com">clubofagent.com</a> · <a href="https://github.com/wizard0x0/agentic_only_nft" target="_blank">GitHub</a> · X Layer Mainnet</p>
+  <p style="margin-top:.5rem;font-size:.72rem;color:#334155;">This whitepaper is for informational purposes. $AGENT token and future phases are under development and not guaranteed.</p>
+</footer>
+
+</body>
+</html>
