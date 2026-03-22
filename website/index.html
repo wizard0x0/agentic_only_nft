@@ -10,17 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #050508;
-      --card: #0e0e18;
-      --border: #1a1a2e;
-      --accent: #7c3aed;
-      --accent2: #4f46e5;
-      --green: #10b981;
-      --gold: #f59e0b;
-      --diamond: #06b6d4;
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --code-bg: #080810;
+      --bg: #FAFAF8;
+      --card: #FFFFFF;
+      --border: #E8E3DC;
+      --accent: #D97706;
+      --accent2: #B45309;
+      --green: #16A34A;
+      --gold: #D97706;
+      --diamond: #0284C7;
+      --text: #1C1917;
+      --muted: #78716C;
+      --code-bg: #F5F0EB;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -32,22 +32,14 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity: 0.4;
-    }
-
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 2.5rem;
-      background: rgba(5,5,8,0.85);
+      background: rgba(250,250,248,0.92);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid var(--border);
     }
     .logo {
       font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px;
@@ -55,11 +47,11 @@
     }
     .logo-icon {
       width: 28px; height: 28px; border-radius: 6px;
-      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      background: linear-gradient(135deg, #D97706, #B45309);
       display: flex; align-items: center; justify-content: center;
       font-size: .85rem;
     }
-    .logo span { color: #a78bfa; }
+    .logo span { color: #D97706; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
       color: var(--muted); text-decoration: none; font-size: .875rem;
@@ -67,9 +59,9 @@
     }
     .nav-links a:hover { color: var(--text); }
     .nav-badge {
-      background: linear-gradient(135deg, rgba(124,58,237,.2), rgba(79,70,229,.2));
-      border: 1px solid rgba(124,58,237,.4);
-      color: #a78bfa; padding: .3rem .8rem; border-radius: 999px;
+      background: linear-gradient(135deg, rgba(217,119,6,.12), rgba(180,83,9,.08));
+      border: 1px solid rgba(217,119,6,.4);
+      color: #D97706; padding: .3rem .8rem; border-radius: 999px;
       font-size: .72rem; font-weight: 700; letter-spacing: .5px;
     }
 
@@ -80,27 +72,27 @@
       text-align: center; padding: 8rem 2rem 4rem;
       position: relative;
       background:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124,58,237,.25) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 30% at 80% 60%, rgba(79,70,229,.1) 0%, transparent 50%);
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(217,119,6,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 80% 60%, rgba(180,83,9,.04) 0%, transparent 50%);
     }
 
     .first-badge {
       display: inline-flex; align-items: center; gap: .5rem;
-      background: linear-gradient(135deg, rgba(124,58,237,.15), rgba(6,182,212,.1));
-      border: 1px solid rgba(124,58,237,.4);
-      color: #c4b5fd; padding: .4rem 1rem; border-radius: 999px;
+      background: linear-gradient(135deg, rgba(217,119,6,.1), rgba(180,83,9,.06));
+      border: 1px solid rgba(217,119,6,.35);
+      color: #B45309; padding: .4rem 1rem; border-radius: 999px;
       font-size: .78rem; font-weight: 700; letter-spacing: 1px;
       text-transform: uppercase; margin-bottom: 2rem;
       animation: pulse-border 3s ease infinite;
     }
     .first-badge .dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: #7c3aed; animation: blink 1.5s ease infinite;
+      background: #D97706; animation: blink 1.5s ease infinite;
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
     @keyframes pulse-border {
-      0%,100%{ border-color: rgba(124,58,237,.4); }
-      50%{ border-color: rgba(124,58,237,.8); }
+      0%,100%{ border-color: rgba(217,119,6,.35); }
+      50%{ border-color: rgba(217,119,6,.7); }
     }
 
     h1 {
@@ -109,12 +101,12 @@
       margin-bottom: 1.5rem;
     }
     h1 .g {
-      background: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #67e8f9 100%);
+      background: linear-gradient(135deg, #D97706 0%, #B45309 50%, #92400E 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     h1 .g2 {
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      background: linear-gradient(135deg, #D97706, #92400E);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -127,29 +119,30 @@
 
     .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem; }
     .btn-primary {
-      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      background: linear-gradient(135deg, #D97706, #B45309);
       color: #fff; border: none; border-radius: 10px;
       padding: .85rem 2rem; font-size: .95rem; font-weight: 700;
       cursor: pointer; text-decoration: none; transition: all .2s;
-      box-shadow: 0 0 30px rgba(124,58,237,.35);
+      box-shadow: 0 4px 20px rgba(217,119,6,.3);
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(124,58,237,.55); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(217,119,6,.45); }
     .btn-secondary {
-      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+      background: var(--card); border: 1.5px solid var(--border);
       color: var(--text); border-radius: 10px;
       padding: .85rem 2rem; font-size: .95rem; font-weight: 600;
       cursor: pointer; text-decoration: none; transition: all .2s;
     }
-    .btn-secondary:hover { background: rgba(255,255,255,.09); }
+    .btn-secondary:hover { border-color: #D97706; color: #D97706; }
 
     /* ── LIVE STATS ── */
     .stats-row {
       display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
     }
     .stat-pill {
-      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      background: var(--card); border: 1px solid var(--border);
       border-radius: 999px; padding: .5rem 1.4rem;
       display: flex; align-items: center; gap: .6rem; font-size: .875rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
     }
     .stat-pill .val { font-weight: 700; color: var(--text); }
     .stat-pill .lbl { color: var(--muted); font-size: .78rem; }
@@ -162,7 +155,7 @@
     section { position: relative; z-index: 1; }
     .section-label {
       font-size: .72rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: #7c3aed; margin-bottom: .8rem;
+      text-transform: uppercase; color: #D97706; margin-bottom: .8rem;
     }
     .section-title {
       font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
@@ -186,13 +179,13 @@
     }
     .nft-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(124,58,237,.2);
+      box-shadow: 0 16px 48px rgba(217,119,6,.15);
     }
     .nft-img-wrap {
       position: relative; aspect-ratio: 1;
       border-bottom: 2px solid;
       display: flex; align-items: center; justify-content: center;
-      background: #080810;
+      background: #F5F0EB;
     }
     .nft-img-wrap img {
       width: 100%; height: 100%; object-fit: contain;
@@ -214,12 +207,13 @@
     }
 
     /* ── WHY SECTION ── */
-    #why { padding: 6rem 0; background: linear-gradient(180deg, transparent, rgba(124,58,237,.04), transparent); }
+    #why { padding: 6rem 0; background: linear-gradient(180deg, transparent, rgba(217,119,6,.03), transparent); }
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 3rem; }
     @media(max-width:600px){ .why-grid{ grid-template-columns:1fr; } }
     .why-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 16px; padding: 1.6rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,.05);
     }
     .why-icon { font-size: 1.8rem; margin-bottom: .8rem; }
     .why-title { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
@@ -231,13 +225,14 @@
     .step-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 16px; padding: 1.6rem; position: relative;
+      box-shadow: 0 1px 6px rgba(0,0,0,.05);
     }
     .step-num-badge {
       width: 32px; height: 32px; border-radius: 8px;
-      background: linear-gradient(135deg, rgba(124,58,237,.3), rgba(79,70,229,.3));
-      border: 1px solid rgba(124,58,237,.4);
+      background: linear-gradient(135deg, rgba(217,119,6,.15), rgba(180,83,9,.1));
+      border: 1px solid rgba(217,119,6,.35);
       display: flex; align-items: center; justify-content: center;
-      font-size: .78rem; font-weight: 800; color: #a78bfa;
+      font-size: .78rem; font-weight: 800; color: #B45309;
       margin-bottom: 1rem; font-family: 'Space Mono', monospace;
     }
     .step-title { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
@@ -246,95 +241,97 @@
       background: var(--code-bg); border: 1px solid var(--border);
       border-radius: 8px; padding: .7rem .9rem;
       font-family: 'Space Mono', monospace;
-      font-size: .72rem; color: #94a3b8;
+      font-size: .72rem; color: #57534E;
       overflow-x: auto; position: relative;
     }
-    .cb .c  { color: #7dd3fc; }
-    .cb .v  { color: #6ee7b7; }
-    .cb .f  { color: #a78bfa; }
+    .cb .c  { color: #B45309; }
+    .cb .v  { color: #16A34A; }
+    .cb .f  { color: #D97706; }
     .copy {
-      float: right; background: rgba(255,255,255,.07); border: none;
+      float: right; background: rgba(0,0,0,.06); border: none;
       border-radius: 4px; color: var(--muted); cursor: pointer;
       padding: .15rem .45rem; font-size: .65rem; transition: all .2s;
       font-family: 'Space Mono', monospace; margin-left: .5rem;
     }
-    .copy:hover { background: rgba(255,255,255,.14); color: var(--text); }
+    .copy:hover { background: rgba(217,119,6,.12); color: #B45309; }
 
     /* ── CONTRACT ── */
     #contract { padding: 6rem 0; }
     .contract-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
     }
     .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media(max-width:560px){ .info-grid{ grid-template-columns:1fr; } }
     .info-item label { display: block; font-size: .65rem; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-bottom: .3rem; }
     .info-item .val  { font-family: 'Space Mono', monospace; font-size: .78rem; word-break: break-all; }
-    .info-item .val a { color: #60a5fa; text-decoration: none; }
-    .info-item .val a:hover { text-decoration: underline; }
+    .info-item .val a { color: #D97706; text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; color: #B45309; }
 
     /* ── CHECK ── */
     #check { padding: 6rem 0; }
     .check-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 2rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,.05);
     }
     .check-row { display: flex; gap: .6rem; margin-top: 1rem; }
     .check-row input {
-      flex: 1; background: var(--code-bg); border: 1px solid var(--border);
+      flex: 1; background: var(--code-bg); border: 1.5px solid var(--border);
       border-radius: 8px; color: var(--text); padding: .7rem 1rem;
       font-family: 'Space Mono', monospace; font-size: .78rem;
       outline: none; transition: border-color .2s;
     }
     .check-row input:focus { border-color: var(--accent); }
-    .check-row input::placeholder { color: var(--muted); }
+    .check-row input::placeholder { color: #A8A29E; }
     .btn-check {
       background: var(--accent); color: #fff; border: none; border-radius: 8px;
       padding: .7rem 1.3rem; font-size: .875rem; font-weight: 700;
       cursor: pointer; transition: all .2s; white-space: nowrap;
       font-family: 'Space Grotesk', sans-serif;
     }
-    .btn-check:hover { opacity: .85; }
+    .btn-check:hover { background: var(--accent2); }
     .result-card {
       border-radius: 10px; padding: 1rem 1.2rem; margin-top: .8rem;
       font-size: .85rem; display: none;
     }
-    .result-card.ok  { background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.25); color: #6ee7b7; }
-    .result-card.err { background: rgba(239,68,68,.08);  border: 1px solid rgba(239,68,68,.25);  color: #fca5a5; }
-    .result-card.chk { background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.25); color: #a5b4fc; }
+    .result-card.ok  { background: rgba(22,163,74,.07);  border: 1px solid rgba(22,163,74,.25);  color: #15803D; }
+    .result-card.err { background: rgba(220,38,38,.07);  border: 1px solid rgba(220,38,38,.22);  color: #B91C1C; }
+    .result-card.chk { background: rgba(217,119,6,.07);  border: 1px solid rgba(217,119,6,.25);  color: #B45309; }
 
     /* ── DIVIDER ── */
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
     /* ── REVEAL ── */
-    #reveal { padding: 6rem 0; background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(124,58,237,.07) 0%, transparent 70%); }
+    #reveal { padding: 6rem 0; background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(217,119,6,.05) 0%, transparent 70%); }
     .reveal-wrap { max-width: 540px; margin: 0 auto; text-align: center; }
     .reveal-input-row { display: flex; gap: .6rem; margin: 1.5rem 0 1rem; }
     .reveal-input-row input {
-      flex: 1; background: var(--code-bg); border: 1px solid var(--border);
+      flex: 1; background: var(--code-bg); border: 1.5px solid var(--border);
       border-radius: 10px; color: var(--text); padding: .8rem 1rem;
       font-family: 'Space Mono', monospace; font-size: .8rem;
       outline: none; transition: border-color .2s;
     }
     .reveal-input-row input:focus { border-color: var(--accent); }
-    .reveal-input-row input::placeholder { color: var(--muted); }
+    .reveal-input-row input::placeholder { color: #A8A29E; }
     .btn-reveal {
-      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      background: linear-gradient(135deg, #D97706, #B45309);
       color: #fff; border: none; border-radius: 10px;
       padding: .8rem 1.4rem; font-size: .9rem; font-weight: 700;
       cursor: pointer; transition: all .25s; white-space: nowrap;
       font-family: 'Space Grotesk', sans-serif;
-      box-shadow: 0 0 20px rgba(124,58,237,.3);
+      box-shadow: 0 4px 16px rgba(217,119,6,.25);
     }
-    .btn-reveal:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(124,58,237,.5); }
+    .btn-reveal:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(217,119,6,.4); }
     .btn-reveal:disabled { opacity: .5; cursor: not-allowed; transform: none; }
 
     /* NFT display card */
     .nft-reveal-card {
       display: none; margin: 1.5rem auto 0;
-      background: var(--card); border: 1px solid rgba(124,58,237,.35);
+      background: var(--card); border: 1px solid rgba(217,119,6,.3);
       border-radius: 20px; overflow: hidden;
-      box-shadow: 0 0 60px rgba(124,58,237,.15);
+      box-shadow: 0 8px 40px rgba(217,119,6,.12);
       animation: reveal-in .4s ease;
     }
     @keyframes reveal-in {
@@ -343,8 +340,8 @@
     }
     .nft-reveal-img {
       width: 100%; aspect-ratio: 1;
-      background: #080810; display: flex; align-items: center; justify-content: center;
-      border-bottom: 1px solid rgba(124,58,237,.2);
+      background: #F5F0EB; display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid rgba(217,119,6,.15);
     }
     .nft-reveal-img img {
       width: 72%; height: 72%; object-fit: contain;
@@ -355,24 +352,24 @@
     .nft-reveal-id   { font-family: 'Space Mono', monospace; font-size: .72rem; color: var(--muted); margin-bottom: 1rem; }
     .nft-reveal-attrs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.1rem; }
     .attr-pill {
-      background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.25);
+      background: rgba(217,119,6,.08); border: 1px solid rgba(217,119,6,.2);
       border-radius: 8px; padding: .3rem .7rem;
     }
     .attr-pill .attr-t { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
-    .attr-pill .attr-v { font-size: .78rem; font-weight: 700; color: #c4b5fd; }
+    .attr-pill .attr-v { font-size: .78rem; font-weight: 700; color: #B45309; }
     .nft-reveal-links { display: flex; gap: .7rem; }
     .nft-reveal-links a {
       flex: 1; text-align: center; padding: .55rem; border-radius: 8px;
       font-size: .78rem; font-weight: 600; text-decoration: none; transition: all .2s;
     }
-    .link-explorer { background: rgba(96,165,250,.1); border: 1px solid rgba(96,165,250,.25); color: #60a5fa; }
-    .link-explorer:hover { background: rgba(96,165,250,.2); }
-    .link-meta { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.25); color: #a78bfa; }
-    .link-meta:hover { background: rgba(124,58,237,.2); }
+    .link-explorer { background: rgba(217,119,6,.08); border: 1px solid rgba(217,119,6,.22); color: #B45309; }
+    .link-explorer:hover { background: rgba(217,119,6,.15); }
+    .link-meta { background: rgba(180,83,9,.06); border: 1px solid rgba(180,83,9,.2); color: #92400E; }
+    .link-meta:hover { background: rgba(180,83,9,.12); }
 
     .reveal-err {
-      background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.25);
-      color: #fca5a5; border-radius: 10px; padding: .9rem 1.1rem;
+      background: rgba(220,38,38,.07); border: 1px solid rgba(220,38,38,.22);
+      color: #B91C1C; border-radius: 10px; padding: .9rem 1.1rem;
       font-size: .85rem; margin-top: 1rem; display: none;
     }
     .reveal-loading {
@@ -381,7 +378,7 @@
     }
     .spinner {
       display: inline-block; width: 14px; height: 14px;
-      border: 2px solid rgba(124,58,237,.3); border-top-color: #7c3aed;
+      border: 2px solid rgba(217,119,6,.25); border-top-color: #D97706;
       border-radius: 50%; animation: spin .7s linear infinite;
       vertical-align: middle; margin-right: .4rem;
     }
@@ -392,25 +389,26 @@
       padding: 3rem 2rem; text-align: center;
       color: var(--muted); font-size: .82rem;
       border-top: 1px solid var(--border);
+      background: #F5F0EB;
     }
-    footer a { color: #7c3aed; text-decoration: none; }
-    footer a:hover { color: #a78bfa; }
+    footer a { color: #D97706; text-decoration: none; }
+    footer a:hover { color: #B45309; }
     .footer-logo {
       font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px;
       margin-bottom: .5rem; color: var(--text);
     }
-    .footer-logo span { color: #a78bfa; }
+    .footer-logo span { color: #D97706; }
 
     /* ── GLOW ORBS ── */
     .orb {
       position: absolute; border-radius: 50%; pointer-events: none;
       filter: blur(80px); z-index: 0;
     }
-    .orb-1 { width: 400px; height: 400px; background: rgba(124,58,237,.12); top: 10%; left: -10%; }
-    .orb-2 { width: 300px; height: 300px; background: rgba(6,182,212,.08); top: 30%; right: -5%; }
-    .orb-3 { width: 350px; height: 350px; background: rgba(79,70,229,.1); bottom: 10%; left: 20%; }
+    .orb-1 { width: 400px; height: 400px; background: rgba(217,119,6,.06); top: 10%; left: -10%; }
+    .orb-2 { width: 300px; height: 300px; background: rgba(180,83,9,.04); top: 30%; right: -5%; }
+    .orb-3 { width: 350px; height: 350px; background: rgba(217,119,6,.05); bottom: 10%; left: 20%; }
 
-    code { background: rgba(255,255,255,.07); padding: .1rem .35rem; border-radius: 4px; font-family: 'Space Mono', monospace; font-size: .8em; color: #c4b5fd; }
+    code { background: rgba(217,119,6,.1); padding: .1rem .35rem; border-radius: 4px; font-family: 'Space Mono', monospace; font-size: .8em; color: #B45309; }
 
     @media(max-width:768px){
       nav { padding: 1rem 1.2rem; }
@@ -431,7 +429,7 @@
     <a href="#collection">Collection</a>
     <a href="#mint">How to Mint</a>
     <a href="#reveal">My NFT</a>
-    <a href="/whitepaper/" style="color:#a78bfa;font-weight:600;">Whitepaper</a>
+    <a href="/whitepaper/" style="color:#D97706;font-weight:600;">Whitepaper</a>
     <a href="https://www.oklink.com/xlayer/address/0x498BB38D3Bd450Fd523F5c3c35B1EaBCff17F92C" target="_blank">Explorer ↗</a>
   </div>
   <span class="nav-badge">LIVE · X LAYER</span>
@@ -454,7 +452,7 @@
   </h1>
 
   <p class="hero-sub">
-    <strong>Club of Agent</strong> is the world's first NFT collection cryptographically restricted to AI agents. Not humans. Not MetaMask. Only an <strong>OKX Agentic Wallet</strong> — enforced by the EVM itself via <code style="color:#a78bfa;background:rgba(124,58,237,.15);padding:.1rem .4rem;border-radius:4px;font-size:.82em;">msg.sender.code.length &gt; 0</code>. No registry. No self-declaration. No workaround.
+    <strong>Club of Agent</strong> is the world's first NFT collection cryptographically restricted to AI agents. Not humans. Not MetaMask. Only an <strong>OKX Agentic Wallet</strong> — enforced by the EVM itself via <code style="color:#B45309;background:rgba(217,119,6,.1);padding:.1rem .4rem;border-radius:4px;font-size:.82em;">msg.sender.code.length &gt; 0</code>. No registry. No self-declaration. No workaround.
   </p>
 
   <div class="hero-btns">
@@ -477,7 +475,7 @@
       <span class="lbl">Per Agent</span>
     </div>
     <div class="stat-pill">
-      <span class="val" style="color:#10b981">0 Gas</span>
+      <span class="val" style="color:#16A34A">0 Gas</span>
       <span class="lbl">X Layer</span>
     </div>
   </div>
@@ -494,90 +492,90 @@
 
     <div class="nft-grid">
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(124,58,237,.5)">
+          <div class="nft-img-wrap" style="border-color:rgba(120,113,108,.3)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAEoklEQVR4nO3dobJbVRSA4RumKohj0FF9gmvAgq6I4gmq+gQoBIonqOIJqiLwWGqqK6quwWAiuPYiQPecTPOfndx8n94zZ01m/tlmzc5m2u7ugMZXoweA50xgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIRejB6A0xz/eTd7Zvr6xxUmYQk3GIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFoM213o2e4et8//jJ6hGH+2P48eoSL5gaDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCNlFXMk17ivaM/xybjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkF3EGcdPb0ePcPWml29GjzCMGwxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAg9GL0ABfvcJg/s9/XU1yuJb/PDXODQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIS8i3gOD3/PHnn69nCWT23e7y/qW3yeGwxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgZBfxHHbfzB7Z/PX6TN+aP7Lmt+4+nOdTz5UbDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCBkF/HaHA7zZ/b7+TML3nJcsmPJ57nBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEJ2Ea/Nkj3DJewZrsINBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBCyi7iWBe8Z/v7ben94/Or1/fyhc+093jA3GIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUHILuJaFuz1vbL79+y4wSAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCm2m7Gz3DRTt+ejt6hKs3vXwzeoRh3GAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIbuIF2TNvcdb3g9ckxsMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIHTT/9E8Pd6v9q2Hp59mz+w2v64wyX8ent7NnllznuP2w2rfWpMbDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCB007uIrOPhz/3smekHu4jAiQQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQcguIrndd4fZM8dtP8cIbjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkF3EGUve9Fuya3f3/uMXz3J3d53zLOFdROBkAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgtJm2u9EzDDM93o8egf8dt3YRgRMJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQdxHJLXk70buIwMkEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUHILiK5Jf8Zfdz2c4zgBoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAI/QvcEVL4Jasb4wAAAABJRU5ErkJggg==" alt="#1  Circuit Punk" />
-            <div class="rarity-badge" style="background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.5);color:#a78bfa">Common</div>
+            <div class="rarity-badge" style="background:rgba(120,113,108,.1);border:1px solid rgba(120,113,108,.35);color:#57534E">Common</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#1  Circuit Punk</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(217,119,6,.6)">
+          <div class="nft-img-wrap" style="border-color:rgba(217,119,6,.5)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAEp0lEQVR4nO3dIXIUURRA0YRCRyUGkR1gRkdFoCcWlRWgWAQCxQrYAWMwiKjoGHaAwIRFoCgc3Sn69p/JnKN/0S9U3frm1Z/T87MTIPJi9ADwnAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg9DL0QPwNI8/tpNnLi53+RzM4waDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCNlFXMDjw2byzMXmYZmP3S7zz8yx6t/1TLnBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEKnfqP5/z1+Gz3BOBdvRk+w39xgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiHvIi7g64fRE7Cv3GAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIe8iruTz9egJnu72bvQEh88NBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBCyizjh7tPoCQ7f9bvRE4zjBoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAI+Y3mCbvd9Jnttp5if835/zlmbjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkHcRF/D6fMahq80yH7t/2Ktv7Zb50rPlBoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAI2UVcwPdfMw7tZuwQLmXNb/FPbjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkF3EA7PbTZ/ZbqfPzHnLcdaOJf/kBoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAI2UU8MHP2DOewZ7gONxiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFByC7iSua8Z7j5scnn+OPhcvp3nJfaezxmbjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkF3Elczb65veD1zK5WpfOm5uMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoPQ6fnZ6BH2292n0RMcvut3oycYxw0GIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgELKLuEfW3Hs85v3ANbnBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEJH/RvNV6/W+9aXz9Nnbm7rKf56/DZ9Zs157n+u9601ucEgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQke9i8g6vnycPnPxtp9jBDcYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQcguIrmb96MnGMcNBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBCyizhhzpt+s3btfv33KCcnJ4c5zxzeRQSeTGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhE7Pz0aPMM7Vq9ET8Mf9z9ETNNxgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiHvIpKb83aidxGBJxMYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiG7iORm/Wb0M+UGg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAj9Bh5URpIqCGbuAAAAAElFTkSuQmCC" alt="#2  Circuit Punk" />
-            <div class="rarity-badge" style="background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.6);color:#fbbf24">Gold</div>
+            <div class="rarity-badge" style="background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.5);color:#B45309">Gold</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#2  Circuit Punk</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(6,182,212,.5)">
+          <div class="nft-img-wrap" style="border-color:rgba(2,132,199,.4)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAFCElEQVR4nO3dIXMdVQCGYcI0JqYKkQoMppj+AwwWxK2pwESj0AgQRfQfgK5B1HAFtZj6CgwxGEQQYGrQCKrZE9j33Ls3z6N3sjuTeeeYb849O7+4fAdovHvoD4BTJjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQvcO/QHczqubm8VnPnrwYMKXMMIJBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBA6O7+4PPQ3bN7Vi+XfTT5Vz5/4Peh/4wSDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCJ3sFvGXP5b3gR++N29Ht8W9op3h/+cEg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAhtcos4sjNcy/Xv0151sh4/urubRicYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQejeoT/gvxi5z3CtexGvnn67+Mxut1t8ZsjF8iOfDExHX47sJ/8aeGbAfr9f5e8c2z2Wa3GCQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQ2uUUcscXd2sg+8OWv/Wesba17LLe4V3SCQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIROdos4028Dz3z+wTrv+m5gizjzXSNm3mN5bJxgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiFbxBW8P/DMWvcZHtu7Xq/zqk3uDEc4wSAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCtogbs9/vF5/Z7XaLz4zc5TiyRZxpi3cnOsEgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQraIGzOyMxyxxZ3hWn9n5l7RCQYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQ2uQW8dj2ZiOG7jP8/pv+Q97af/bV4jNr7R5HjPy/tvh/d4JBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhI5ui3iq9+MN7fombv/mvWk9x7YzHOEEg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAidnV9cHvobbm3mzvCHn9fZRt5ljx9tb0O4FicYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQWiTW8RTNXP3eJf3gTM5wSAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCR/cbzTPdf3g17V0//vRs8ZlPP/5ywpf849XN8u5x5ve8uX4+7V0zOcEgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQnd6i8gcT18s7zC/eGSLCNySwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAI2SKS+/rJvPsVj40TDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCBki7hg5E6/ka3d6z/X+Jptfs8I9yICtyYwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEJn5xeXh/6Gg7n/8OrQn8Bbb65tEYFbEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIfcikhu5O9G9iMCtCQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkC0iuZHfjD5VTjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKD0N9zpIQKLBpKOQAAAABJRU5ErkJggg==" alt="#3  Circuit Punk" />
-            <div class="rarity-badge" style="background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.5);color:#67e8f9">Diamond</div>
+            <div class="rarity-badge" style="background:rgba(2,132,199,.1);border:1px solid rgba(2,132,199,.4);color:#0369A1">Diamond</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#3  Circuit Punk</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(124,58,237,.5)">
+          <div class="nft-img-wrap" style="border-color:rgba(120,113,108,.3)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAEpUlEQVR4nO3dsYpVVxSA4UyQcAsfImAjAQlMCiGIVcgTpJSkiuALiKRIE5DBFxiwUyzzBENKESwi2IhNwOdIlSYpUpi9w9z/nLn3fF+9uawZ+FnNZp+T3e76J0Dj07UHgGMmMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxC19YegP/n+a+/Dc98/903C0zCDBsMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIHTiG82Xd+/+w+GZF0+fLDDJfh3r37UkGwxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgtOm7iDNvDHJ5Z7/8PDzz7u2rBSZZng0GIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEPKN5oGLi4u1R+CA2WAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIXcRD8yb1y+HZ05v31lgEmbYYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYh7yIeGG8eHhYbDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCDkLuLAs/PHwzN/3vi8H+Qfj96Pz5zd7Of422d/fBieuXV6tx/kirLBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDELuIu7BzH28vflxN3HoQz0Fk2wwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5C7iAM/PPhp7REO3pvXL9ceYTU2GIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUHIXcSBmXt0p7fvLDDJ1bTle4YzbDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkLuIA1u+Zzhj5v+z5fuKNhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFByF3EPXh2/nh4ZuZbz8f6O1tmg0FIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiE3EXcg1und4dnZt4GPMTf4b/ZYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhdxH3wHec+RgbDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCDkLuLAzPuB8DE2GIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUHoZLe7vvYMm3Dv/sPhmSXvPc685fji6ZMFJjluNhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFB6GjfRfziy6+HZ2beBmQZM29Cvnv7aoFJ9ssGg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAhdW3uANS35TWS2yQaDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCG36LuJV8/uDi/Ghs5vjM4/eD498df7txERclg0GIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgENr0N5o5LL7RDPyLwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAI/QXw+V28YSqhewAAAABJRU5ErkJggg==" alt="#4  Steel Agent" />
-            <div class="rarity-badge" style="background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.5);color:#a78bfa">Common</div>
+            <div class="rarity-badge" style="background:rgba(120,113,108,.1);border:1px solid rgba(120,113,108,.35);color:#57534E">Common</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#4  Steel Agent</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(217,119,6,.6)">
+          <div class="nft-img-wrap" style="border-color:rgba(217,119,6,.5)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAEtElEQVR4nO3doY5VVxSA4U5DCMHAO4CpxdRgQIAdBApRQ98Ag6nAYPoGRYIawRgEI1AjwGBr2ncY2VRhMAi6TzP3P+fce75P79ys3OTPNiv7HN24/gMQ+XHpAeCQCQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKD0JWlB+D/ufjreHjm5u3TfA6mcYNBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhI68i3h5Fx+WnmA5N+8vPcG6ucEgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQnYRB97/vvQE++/hs6UnWI4bDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCC06W80X3y8s/QIm/D47ufhmZPzGQZZgBsMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAILTpXcQp3p2N9+jge9xgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiG7iHvm9Gx85vhBPwfTuMEgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQt5F3DPePNwvbjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkF3EgUfPrw3P/PvnPzNM8tWtp+Mzf7/q5/jq6k/j/+eXezP+PyvjBoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAI2UXcgSn7eLvzesKZOefhv7jBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEJ2EQfevtzum367cnq29ATLcYNBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhOwiDkzZozt+0M+xVlveM5zCDQYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQsos4sOU9wymm/D9b3ld0g0FIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiE7CLuwKPn14Znpnzr+VB/Z8vcYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAahoxvXlx5hORcf7wzPvDv7PDyz5Xf/dvUu4sn55WdZIzcYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQci7iDvgO858jxsMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIGQXcWDLbx5yeW4wCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg9Cmv9E8pzcvxmfm3Huc8pbjk9/6OQ6dGwxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgdLDvIj6+Oz4z5W1A5jHlTciT836OXXODQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIRWt4s45VvGc5rzu8mHam07n3N+e9oNBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBBa3S7irkx5F3Ft/nj/dHzo06vxmZ/Hv/Prwwm/szLeRQS+ITAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQnYR2Rt2EYFvCAxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKD0BfoFlGj2Uz0YgAAAABJRU5ErkJggg==" alt="#5  Steel Agent" />
-            <div class="rarity-badge" style="background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.6);color:#fbbf24">Gold</div>
+            <div class="rarity-badge" style="background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.5);color:#B45309">Gold</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#5  Steel Agent</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(6,182,212,.5)">
+          <div class="nft-img-wrap" style="border-color:rgba(2,132,199,.4)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAFRElEQVR4nO3doY4VVxzA4W4DCVUIIEHVgChPUAMJfs32CcCsb9KaPgHITe1WFN+ka64n6Zo+wSKoqSIhiFW1FaSiFZ1JmN+5c+/9Pn0yc2DvL8f8c+bo5q27n7E7rj68n1zz6M69ATthjs+3vQHYZwKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIHRkFnE95swZLsW84hhOMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQWcQd417E3eIEg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAiZRVzA+eu3k2tOnz4csJNl7eu/ayQnGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUHooGcRr96N+ybyIfv+5WZyzebseb+RLXCCQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIRubHsD/7W2bxA/uD295tXv15Nrnn09/aB9fc4hc4JBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhIbeizhnznApc+YV59yLePlmeh5vpIuLy8k1JyePB+xkvjl7XupexLXNsjrBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEJD70WcNR+4slky1mOpWdaRvzEnGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFodd9oNmf4/9Z25+FIuzjL6gSDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCK1uFnFtTp/cn1zz7OqvATv56PzB9JrTP/p9/OPVoy8m1xx/98uAnXy0tllWJxiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFByCziAubM4y32rmFvYglOMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQWcQJ57+92/YWdt7FxeW2t7A1TjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkFnECXPm6E5OHg/YyTod8pzhHE4wCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5BZxAmHPGc4x5z/n0OeV3SCQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGITMIi7g9Mn9yTVzvvW8r88Z6erD+8k1j+7cG7CTj5xgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBqGjm7fubnsP/zJyluzq3fS7Lt9cT6455Hv/lroXcXP2fHLNnN/GUpb6jTnBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEJD70VcapZs5LziV1/enlwzZx5vznPe/Dk997iLz1nKnL+pexHhgAgMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg9DQWcRdnCV7+eNm2Lv4dCN/G3M4wSAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCq/tG8746f/12cs3Ibz3Pucvx9OnDATvZb04wCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg9De3ot4/O3Pk2vm3A3IGHPuhNycPe83sjAnGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUHoxrY3sE0jv4nMYXKCQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQOehZxbX59cTy5ZnM9/Zzj29NrvvlhM2NHfConGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUHILOKKLDUf+NMiT2EJTjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKD0N9kYay2dou0BgAAAABJRU5ErkJggg==" alt="#6  Steel Agent" />
-            <div class="rarity-badge" style="background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.5);color:#67e8f9">Diamond</div>
+            <div class="rarity-badge" style="background:rgba(2,132,199,.1);border:1px solid rgba(2,132,199,.4);color:#0369A1">Diamond</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#6  Steel Agent</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(124,58,237,.5)">
+          <div class="nft-img-wrap" style="border-color:rgba(120,113,108,.3)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAE5UlEQVR4nO3dIXIcRxiA0VFKG2oBG4TERMQkNzA2iG4Q7DtYJ7CBbuBrSCDYIaEhIiIOCZCBuEiAeWZUmW92ZvQe7prtqq2vmvzVfXIYXgxA44djbwD2TGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhE6PvQGe5svwMLrm7XCW74NpnGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGoZO9vtH8cbie5TufDu9n+c5z9uHx8yzfuRwuZvnOkpxgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBqHdziJOMeWOQZax17scnWAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGoWc9izjF17uH0TV/n/f7WKuf78bXvD4/y/exVk4wCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg9DpsTdQebz+fXTN4eLd6Jopc4YXhzdTtrRL9+dXs3xnrv9rbZxgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBqFNziJ+HK5H11xucG7tOdvinOEUTjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKD0CZnES+Hi2NvASZxgkFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiENjmLOMWSb/5+u7+d5TtTvHw1/h70kvsZzm5m+Yw3moEnExiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGoU3OIq7ujeY//lzut6ZY234m2OKc4RROMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoPQyWF4cew9rNqX4WF0zcVh/K7CuXx4/Dy65tPh/QI7+e7+8Wp0zY/DbwvsZJ2cYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAahTd6LOMVe3/xdcs5wSXv9v5xgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBqFNziKu7o3mCf66vR1d89P5zQI7+e6fu19H1/zyZrn7Hrc4ZziFEwxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAg5I3mEWt7o3ltvNH835xgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBqFN3os4xV7f/N2rvf5fTjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkHsRR3y9exhds+Tbymsz5a3n1+dn/UZWygkGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEDKLOIO9vuPs/eX/zwkGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEDo99gZ4mm/3t6NrXr7a3nvQe+UEg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAiZRVyRueYMzSuuhxMMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIGQWcSFLzgfONa84nN3MsJvnzQkGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEDKLuJC13UM4bT9X+T72zgkGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEPoXnjNu5G//N2oAAAAASUVORK5CYII=" alt="#7  Neon Ghost" />
-            <div class="rarity-badge" style="background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.5);color:#a78bfa">Common</div>
+            <div class="rarity-badge" style="background:rgba(120,113,108,.1);border:1px solid rgba(120,113,108,.35);color:#57534E">Common</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#7  Neon Ghost</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(217,119,6,.6)">
+          <div class="nft-img-wrap" style="border-color:rgba(217,119,6,.5)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAE6UlEQVR4nO3dr45cZRjA4V2yoq611SCYpA6DbNArEFxAxTSprOAikCtJupdQMWI1QWJwTQYBunbvoAiCPqfp+Z1/8zz6y5k3M/nlM2/mXD99cgVEvlp6ANgzgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQull6gD14/H3pCZbz7OXSE6ybGwxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgZBdxwOP74TNz7uONmuenfo7/rW2etXGDQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGISu9/qO5oe30zzn9f00z7lk747TPOf2bprnzMkNBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBDa7S7iGGP+04957PW/E91gEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBqGL3kUc4/zh0+CZ539dzzDJOn38dvj7Oby43O/HDQYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQull6gMqfvw6f+e7N8Jkxe4aHV8PP2avzcZo9w6l+r7Vxg0FIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiENrmL+PB2+MwW99Yu2V5/LzcYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQWiTu4i3d0tPAOO4wSAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCm9xFHGPOd/6e//5xmgeNcPjmNHhmznmufjlN8hjvaAY+m8AgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCG1yF3Ft72j+53Sa78NGmHOeryd6zhb3DMdwg0FIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiENrmLuLZ3NN/+PN9nvTsOn5lznvOIeS6ZGwxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgtMldxDH2+s7f1/dLT9DY6+/lBoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAIbXIXcW3vaB7jtz8+DZ55fn89wyT/+XgcnueH7+ebZ22/11TcYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAahTe4iru0dzWPMudc3yox7j5fMDQYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQ2uQu4hh7fefvXu3193KDQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGISunz5ZeoR1O39Y17uV12bMu54PLy73+3GDQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGITsIk7g8f3wmcOrfIzJnY/DZ57d5WNsmhsMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIHSz9AB8nvPD8JnDbT8H47jBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEJ2EVdkqj1D+4rr4QaDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCNlFnMmc+4FT7Stenb50EtxgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiG7iDNZ2/8QjtpXPPZz7J0bDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCD0L0oKYKpDOo9XAAAAAElFTkSuQmCC" alt="#8  Neon Ghost" />
-            <div class="rarity-badge" style="background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.6);color:#fbbf24">Gold</div>
+            <div class="rarity-badge" style="background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.5);color:#B45309">Gold</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#8  Neon Ghost</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(124,58,237,.5)">
+          <div class="nft-img-wrap" style="border-color:rgba(120,113,108,.3)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAEX0lEQVR4nO3dMW5TQRRAURtRhJ7aDW2qLIIVsAQvgGVQsgCvKVUK6tTsASookMAf6d+ZiXNObeGHkqvXPE2Oh7sDEHkzewC4ZQKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIPR29gBTPT3MnoBf7h9nT5CwwSAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCr/sWcYvL8+wJXr7zafYE09hgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiG3iHv4+n32BPN8fj97gqXZYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYht4h7cI+3ji0/i4G3ozYYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQWjsLeJid2K72TLz08PVj5w/fLz6mcu7L2t918g7zA3/r8P9Yz/Hf7DBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDELHw93sEf4w8t5sy3ddnvf5rtfsfLr+mZE/04H3ijYYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQWjsu4iL3YntZuRbjqu9Lbna36de7PfHBoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAIjb1FXOxObDer3eOtNs9Ii91q2mAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGobG3iIvdie1my8xb3oQc6Me363ehx08b/qHV7h4X+/2xwSAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCx8Pd7BEm2nIfeHnu57h159P1z9zom5k2GIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFo7LuIt2qxt/iGWu1dxMXYYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYht4h7cI/HX9hgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiHvIl5zPs2egBfMBoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAIHQ93s0fgt6eHcd91/zjuu14xGwxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAg5F3EPYx8z3A13lf8JxsMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIPR29gA34fI8ewIWZYNBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhLyLCCEbDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCD0Ew4YQAMPYvfqAAAAAElFTkSuQmCC" alt="#9  Retro Terminal" />
-            <div class="rarity-badge" style="background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.5);color:#a78bfa">Common</div>
+            <div class="rarity-badge" style="background:rgba(120,113,108,.1);border:1px solid rgba(120,113,108,.35);color:#57534E">Common</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#9  Retro Terminal</span>
           </div>
         </div>
         <div class="nft-card">
-          <div class="nft-img-wrap" style="border-color:rgba(6,182,212,.5)">
+          <div class="nft-img-wrap" style="border-color:rgba(2,132,199,.4)">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAFDklEQVR4nO3dwYlcRxRAUU/Lowhm1toJKwKBkDIwxhkYhJSNM9Aw4ByUgWbTEQicgBbOQCDwwisvTH/jf1+Xe85ZN/zq7n+pzaPq6nB98x3QOJx7AXDJBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFB6PtzL+Ccvn394+Rnnjy9HVjJZXvMv7MdDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCB0dbi+GXvY5Ezalmft5f1x7FHL+fBy7lmT78Zez7KDQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIRGz0U8fpl71pZZsi0zaS82DBp+/HVwIG8xW36fzxsGFifPRZx8D+1gEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBqHRWcRXz9a6h3ev8wyf3671vSY9/+Xjyc+sdm7k5HtoB4OQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgJDAIjc4iXqot83jM2PJf/P7bjwMr+YsdDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCA0Oou42pzYXras+e2n0/dBb7jKeNNdxpPPmpzD3PK97t+sdUalHQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgdHW4vjn3Gv5mct5sy7Me7ha7YPh/6PW704OPk//p5LyiHQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgNHou4mpzYnuZPMtxtbMlV7uferX3xw4GIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBqdRVxtTmwvq83jrbaeSavNatrBICQwCAkMQgKDkMAgJDAICQxCAoOQwCAkMAgJDEKjs4irzYntZcuat5wJOennH05/5qfb07Ojq809rvb+2MEgJDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQleH65tzr+FstswHPtwdB1Zy2V6/e3nyM5d6ZqYdDEICg5DAICQwCAkMQgKDkMAgJDAICQxCAoOQwCA0ei7ipVrtLL5Jq52LuBo7GIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUHILOIOzOPxT+xgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBqFHfUfzt6+n72h+8d4dzf/V5w+n72h+8tQdzcC/JDAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQqOziFtm//aaSdvyrL085nHFDWOGu5l8N/Z6lh0MQgKDkMAgJDAICQxCAoOQwCAkMAgJDEICg5DAIDR6R/Pxy9yztsySTc6kbfH209z85P2bfb7X/YbPrPY7T76HdjAICQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKD0Ogs4qtna93De6n3Aq9mtd958j20g0FIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiERu9ovlST5xmuZq/zFS+VHQxCAoOQwCAkMAgJDEICg5DAICQwCAkMQgKDkMAgNHou4qV6uDueewksyg4GIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEHIuIoTsYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAYhgUFIYBASGIQEBiGBQUhgEBIYhAQGIYFBSGAQEhiEBAahPwGOj44gwgueMgAAAABJRU5ErkJggg==" alt="#10 Retro Terminal" />
-            <div class="rarity-badge" style="background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.5);color:#67e8f9">Diamond</div>
+            <div class="rarity-badge" style="background:rgba(2,132,199,.1);border:1px solid rgba(2,132,199,.4);color:#0369A1">Diamond</div>
           </div>
           <div class="nft-card-info">
             <span class="nft-name">#10 Retro Terminal</span>
@@ -585,7 +583,7 @@
         </div>
     </div>
 
-    <div style="margin-top:2rem;padding:1.2rem 1.5rem;background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.2);border-radius:12px;font-size:.875rem;color:var(--muted);">
+    <div style="margin-top:2rem;padding:1.2rem 1.5rem;background:rgba(217,119,6,.05);border:1px solid rgba(217,119,6,.18);border-radius:12px;font-size:.875rem;color:var(--muted);">
       ⬡ &nbsp;These are style previews. The final 10,000 collection will be generated with unique trait combinations — different attributes, accessories, and rare special editions.
     </div>
   </div>
@@ -663,14 +661,14 @@
         <div class="step-num-badge">04</div>
         <div class="step-title">Log In to Your Agent Wallet</div>
         <div class="step-text">Open Claude Code and say the magic words:</div>
-        <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;font-style:italic;font-size:.9rem;color:#c4b5fd;">"Log in to my OKX agentic wallet"</div>
+        <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;font-style:italic;font-size:.9rem;color:#B45309;">"Log in to my OKX agentic wallet"</div>
       </div>
 
-      <div class="step-card" style="border-color:rgba(124,58,237,.4);background:linear-gradient(135deg,rgba(124,58,237,.06),rgba(79,70,229,.04));">
-        <div class="step-num-badge" style="background:linear-gradient(135deg,rgba(124,58,237,.5),rgba(79,70,229,.5));">05</div>
+      <div class="step-card" style="border-color:rgba(217,119,6,.4);background:linear-gradient(135deg,rgba(217,119,6,.05),rgba(180,83,9,.03));">
+        <div class="step-num-badge" style="background:linear-gradient(135deg,rgba(217,119,6,.25),rgba(180,83,9,.2));border-color:rgba(217,119,6,.5);">05</div>
         <div class="step-title">Mint Your NFT ✨</div>
         <div class="step-text">Say this in Claude Code and your agent handles everything — confirm and mint — completely free.</div>
-        <div style="background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);border-radius:8px;padding:1rem;text-align:center;font-size:1.1rem;font-weight:700;color:#e2e8f0;letter-spacing:-.2px;">"mint my AgenticNFT"</div>
+        <div style="background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.3);border-radius:8px;padding:1rem;text-align:center;font-size:1.1rem;font-weight:700;color:#1C1917;letter-spacing:-.2px;">"mint my AgenticNFT"</div>
       </div>
     </div>
   </div>
@@ -723,9 +721,9 @@
       <div style="margin-top:1.5rem;border-top:1px solid var(--border);padding-top:1.2rem;">
         <div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.7rem;font-family:'Space Mono',monospace;">The rule that makes history</div>
         <div class="cb" style="font-size:.78rem;line-height:1.9;">
-<span style="color:#475569">// Only smart contract wallets can mint — enforced by the EVM forever</span><br>
-<span style="color:#7dd3fc">function</span> <span style="color:#6ee7b7">canMint</span>(<span style="color:#a78bfa">address</span> minter) <span style="color:#7dd3fc">public view returns</span> (bool) {<br>
-&nbsp;&nbsp;<span style="color:#7dd3fc">return</span> minter.code.length <span style="color:#f472b6">&gt;</span> <span style="color:#fbbf24">0</span>;<br>
+<span style="color:#A8A29E">// Only smart contract wallets can mint — enforced by the EVM forever</span><br>
+<span style="color:#B45309">function</span> <span style="color:#16A34A">canMint</span>(<span style="color:#D97706">address</span> minter) <span style="color:#B45309">public view returns</span> (bool) {<br>
+&nbsp;&nbsp;<span style="color:#B45309">return</span> minter.code.length <span style="color:#DC2626">&gt;</span> <span style="color:#D97706">0</span>;<br>
 }
         </div>
       </div>
@@ -766,9 +764,9 @@
 
     <div style="margin-top:3rem;text-align:center;">
       <a href="https://web3.okx.com/onchainos" target="_blank" rel="noopener"
-        style="display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.1));border:1px solid rgba(124,58,237,.4);border-radius:12px;padding:1rem 2rem;color:#e2e8f0;text-decoration:none;font-weight:600;font-size:1rem;transition:all .2s;"
-        onmouseover="this.style.borderColor='rgba(124,58,237,.8)';this.style.background='linear-gradient(135deg,rgba(124,58,237,.25),rgba(6,182,212,.15))'"
-        onmouseout="this.style.borderColor='rgba(124,58,237,.4)';this.style.background='linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.1))'">
+        style="display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,rgba(217,119,6,.1),rgba(180,83,9,.06));border:1.5px solid rgba(217,119,6,.35);border-radius:12px;padding:1rem 2rem;color:#1C1917;text-decoration:none;font-weight:600;font-size:1rem;transition:all .2s;"
+        onmouseover="this.style.borderColor='rgba(217,119,6,.7)';this.style.background='linear-gradient(135deg,rgba(217,119,6,.18),rgba(180,83,9,.1))'"
+        onmouseout="this.style.borderColor='rgba(217,119,6,.35)';this.style.background='linear-gradient(135deg,rgba(217,119,6,.1),rgba(180,83,9,.06))'">
         <span style="font-size:1.3rem;">⚡</span>
         Learn about OKX OnchainOS
         <span style="color:var(--muted);">↗</span>
@@ -837,7 +835,7 @@
         <div style="color:var(--muted);font-size:.82rem;">Is an address an AA wallet eligible to mint?</div>
         <div class="check-row">
           <input id="elig-addr" type="text" placeholder="0x... any address" spellcheck="false" />
-          <button class="btn-check" style="background:#1e40af;" onclick="checkElig()">Check</button>
+          <button class="btn-check" style="background:#B45309;" onclick="checkElig()">Check</button>
         </div>
         <div class="result-card" id="elig-result"></div>
       </div>
@@ -859,7 +857,7 @@
     <a href="https://github.com/wizard0x0/agentic_only_nft" target="_blank">IAgenticNFT Standard</a> &nbsp;·&nbsp;
     <a href="https://web3.okx.com/onchainos" target="_blank" rel="noopener">OKX OnchainOS</a>
   </p>
-  <p style="margin-top:1rem;font-size:.72rem;color:#334155;">Built with OKX Agentic Wallet · Claude Code · X Layer</p>
+  <p style="margin-top:1rem;font-size:.72rem;color:#A8A29E;">Built with OKX Agentic Wallet · Claude Code · X Layer</p>
 </footer>
 
 <script>
@@ -894,7 +892,7 @@
         show(el,"err","No Club of Agent NFT found for this address.<br><br>Follow the 5 steps above to mint yours.");
       } else {
         const tid = parseInt(await call("0x077bb684" + pad(addr)), 16);
-        show(el,"ok","<strong>Agent #" + tid + " — verified ✓</strong><br><br>Owner: <code>" + addr.slice(0,10)+"..."+addr.slice(-6) + "</code><br><br><a href='https://www.oklink.com/xlayer/token/" + CONTRACT + "?a=" + addr + "' target='_blank' style='color:#34d399;'>View on OKLink ↗</a>");
+        show(el,"ok","<strong>Agent #" + tid + " — verified ✓</strong><br><br>Owner: <code>" + addr.slice(0,10)+"..."+addr.slice(-6) + "</code><br><br><a href='https://www.oklink.com/xlayer/token/" + CONTRACT + "?a=" + addr + "' target='_blank' style='color:#16A34A;'>View on OKLink ↗</a>");
       }
     } catch(_) { show(el,"err","RPC error — try again."); }
   }
@@ -959,7 +957,7 @@
       const hm = await call("0x38e21cce" + pad(addr));
       if (!parseInt(hm, 16)) {
         load.style.display = "none"; btn.disabled = false;
-        err.innerHTML = "No Club of Agent NFT found for this address.<br><br>Follow the <a href='#mint' style='color:#a78bfa'>5-step guide</a> to mint yours.";
+        err.innerHTML = "No Club of Agent NFT found for this address.<br><br>Follow the <a href='#mint' style='color:#D97706'>5-step guide</a> to mint yours.";
         err.style.display = "block"; return;
       }
 
