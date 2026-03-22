@@ -232,13 +232,13 @@
     <span class="nav-badge">LIVE · X Layer</span>
     <a href="#steps">Get Started</a>
     <a href="#check">Check NFT</a>
-    <a href="https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B" target="_blank">Explorer ↗</a>
+    <a href="https://www.oklink.com/xlayer/address/0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f" target="_blank">Explorer ↗</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">X Layer Mainnet · Chain ID 196 · Free Mint</div>
+  <div class="hero-badge">X Layer Mainnet · Chain ID 196 · 0.08 OKB</div>
   <h1>The NFT only<br><span class="g">AI Agents</span> can mint</h1>
   <p>AgenticNFT proves your on-chain AI agent identity. Only OKX Agentic Wallet (AA smart contract accounts) can mint — regular wallets are blocked forever by the EVM.</p>
 </div>
@@ -247,10 +247,10 @@
 <div class="stats-bar">
   <div class="stat">
     <div class="stat-val" id="supply" style="color:#a78bfa">...</div>
-    <div class="stat-lbl">Minted</div>
+    <div class="stat-lbl">Minted / 10,000</div>
   </div>
   <div class="stat">
-    <div class="stat-val" style="color:#10b981">Free</div>
+    <div class="stat-val" style="color:#10b981">0.08 OKB</div>
     <div class="stat-lbl">Mint Price</div>
   </div>
   <div class="stat">
@@ -418,7 +418,7 @@
       <div class="step-num green">5</div>
       <div>
         <div class="step-title">Mint Your AgenticNFT</div>
-        <div class="step-sub">Free · Gas-free on X Layer · One per wallet</div>
+        <div class="step-sub">0.08 OKB · Gas-free on X Layer · One per wallet · Max 10,000</div>
       </div>
     </div>
     <div class="card">
@@ -433,14 +433,18 @@
       <ul class="checklist" style="margin-top:.6rem;">
         <li><span class="ck">✓</span> Check your wallet is logged in</li>
         <li><span class="ck">✓</span> Get your X Layer AA wallet address</li>
-        <li><span class="ck">✓</span> Confirm the mint details with you</li>
+        <li><span class="ck">✓</span> Confirm the mint with you — <strong style="color:var(--text)">0.08 OKB</strong></li>
         <li><span class="ck">✓</span> Call <code>mint()</code> on the contract — gas-free</li>
         <li><span class="ck">✓</span> Show you the tx hash and token ID</li>
       </ul>
 
+      <div class="alert warn" style="margin-top:.8rem;">
+        <strong>Cost:</strong> 0.08 OKB per mint · Make sure your X Layer agentic wallet has OKB before minting.
+      </div>
+
       <p style="margin-top:1rem;">Or run the raw command manually:</p>
       <div class="cb">
-        <span class="c">onchainos</span> wallet contract-call <span class="f">--to</span> <span class="v">0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B</span> <span class="f">--chain</span> <span class="v">196</span> <span class="f">--input-data</span> <span class="v">0x1249c58b</span>
+        <span class="c">onchainos</span> wallet contract-call <span class="f">--to</span> <span class="v">0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f</span> <span class="f">--chain</span> <span class="v">196</span> <span class="f">--value</span> <span class="v">0.08</span> <span class="f">--input-data</span> <span class="v">0x1249c58b</span>
         <button class="copy" onclick="cp(this)">copy</button>
       </div>
 
@@ -510,15 +514,19 @@
     <div class="info-grid">
       <div class="info-item">
         <label>Contract Address</label>
-        <div class="val"><a href="https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B" target="_blank">0x5f349...D01B ↗</a></div>
+        <div class="val"><a href="https://www.oklink.com/xlayer/address/0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f" target="_blank">0xF0f2F...BB6f ↗</a></div>
       </div>
       <div class="info-item">
         <label>Network</label>
         <div class="val">X Layer Mainnet · Chain ID 196</div>
       </div>
       <div class="info-item">
-        <label>Standard</label>
-        <div class="val">IAgenticNFT (ERC-721 extension)</div>
+        <label>Mint Price</label>
+        <div class="val">0.08 OKB (native token)</div>
+      </div>
+      <div class="info-item">
+        <label>Max Supply</label>
+        <div class="val">10,000 · one per agentic wallet</div>
       </div>
       <div class="info-item">
         <label>Mint Selector</label>
@@ -526,7 +534,11 @@
       </div>
       <div class="info-item">
         <label>Deploy Tx</label>
-        <div class="val"><a href="https://www.oklink.com/xlayer/tx/0x347c42f71001a63644d3c1ce68753289d2e7abae88dec1aa949f635ea41643fb" target="_blank">0x347c...3fb ↗</a></div>
+        <div class="val"><a href="https://www.oklink.com/xlayer/tx/0xcd23d17460fb5bf01461f061d0e49fcb95bb8b61d5499a6297eef691e674ca38" target="_blank">0xcd23...ca38 ↗</a></div>
+      </div>
+      <div class="info-item">
+        <label>Standard</label>
+        <div class="val">IAgenticNFT (ERC-721 extension)</div>
       </div>
       <div class="info-item">
         <label>Source Code</label>
@@ -549,12 +561,12 @@
 <!-- FOOTER -->
 <footer>
   AgenticNFT · <a href="https://github.com/wizard0x0/agentic_only_nft" target="_blank">GitHub</a> ·
-  <a href="https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B" target="_blank">OKLink Explorer</a> ·
+  <a href="https://www.oklink.com/xlayer/address/0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f" target="_blank">OKLink Explorer</a> ·
   Built with OKX Agentic Wallet + Claude Code
 </footer>
 
 <script>
-  const CONTRACT = "0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B";
+  const CONTRACT = "0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f";
   const RPC = "https://rpc.xlayer.tech";
 
   async function rpc(method, params) {

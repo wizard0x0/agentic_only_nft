@@ -22,8 +22,8 @@ interface IAgenticNFT {
     function canMint(address minter) external view returns (bool);
 
     /// @notice Mint one AgenticNFT to the calling AA wallet
-    /// @dev Reverts if `msg.sender` is not a smart contract, or has already minted.
-    ///      Free to call — no ETH payment required.
+    /// @dev Reverts if `msg.sender` is not a smart contract, or has already minted,
+    ///      or msg.value < MINT_PRICE, or max supply is reached.
     /// @return tokenId The newly minted token ID
-    function mint() external returns (uint256 tokenId);
+    function mint() external payable returns (uint256 tokenId);
 }

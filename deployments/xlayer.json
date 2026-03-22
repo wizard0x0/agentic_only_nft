@@ -1,0 +1,13 @@
+{
+  "contract": "AgenticNFT",
+  "version": "2.0.0",
+  "address": "0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f",
+  "treasury": "0xe85cd5681567c6a5d141b9fd1d2ec58c5736ff55",
+  "mintPrice": "0.08 OKB",
+  "maxSupply": 10000,
+  "network": "xlayer",
+  "chainId": 196,
+  "mintSelector": "0x1249c58b",
+  "deployTx": "0xcd23d17460fb5bf01461f061d0e49fcb95bb8b61d5499a6297eef691e674ca38",
+  "deployedAt": "2026-03-22T10:34:14.999Z"
+}

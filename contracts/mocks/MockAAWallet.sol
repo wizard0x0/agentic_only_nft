@@ -8,19 +8,22 @@ import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 ///      Implements IERC721Receiver so it can safely receive ERC-721 tokens via _safeMint.
 ///      Used only in tests — never deploy to mainnet.
 contract MockAAWallet is IERC721Receiver {
+    /// @notice Allow the mock to receive OKB for test payments
+    receive() external payable {}
+
     /// @notice Required by IERC721Receiver — accepts all ERC-721 tokens
     function onERC721Received(
-        address, // operator
-        address, // from
-        uint256, // tokenId
-        bytes calldata // data
+        address,
+        address,
+        uint256,
+        bytes calldata
     ) external pure override returns (bytes4) {
         return IERC721Receiver.onERC721Received.selector;
     }
 
-    /// @notice Call mint() on an IAgenticNFT contract and return the tokenId
-    function mint(address nftContract) external returns (uint256 tokenId) {
-        (bool ok, bytes memory data) = nftContract.call(
+    /// @notice Call mint() on an IAgenticNFT contract, forwarding `value` OKB
+    function mint(address nftContract, uint256 value) external returns (uint256 tokenId) {
+        (bool ok, bytes memory data) = nftContract.call{value: value}(
             abi.encodeWithSignature("mint()")
         );
         require(ok, "mint call failed");

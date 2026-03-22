@@ -4,8 +4,8 @@ description: "Use this skill when the user wants to mint an AgenticNFT, check if
 license: MIT
 metadata:
   author: community
-  version: "1.0.0"
-  homepage: "https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B"
+  version: "2.0.0"
+  homepage: "https://www.oklink.com/xlayer/address/0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f"
   agent:
     requires:
       bins: ["onchainos"]
@@ -19,16 +19,18 @@ metadata:
 
 # AgenticNFT Mint
 
-Mint the **AgenticNFT** on X Layer — an ERC-721 that can only be minted by OKX Agentic Wallet (AA smart contract accounts). Free. Gas-free.
+Mint the **AgenticNFT** on X Layer — an ERC-721 that can only be minted by OKX Agentic Wallet (AA smart contract accounts). Costs **0.08 OKB**. Max supply 10,000. One per agentic wallet.
 
 ## Contract
 
 | | |
 |---|---|
-| Address | `0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B` |
+| Address | `0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f` |
 | Chain | X Layer Mainnet · chainId **196** |
+| Mint price | **0.08 OKB** (native token) |
+| Max supply | 10,000 |
 | Mint calldata | `0x1249c58b` |
-| Explorer | https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B |
+| Explorer | https://www.oklink.com/xlayer/address/0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f |
 
 ## Prerequisite: onchainos CLI
 
@@ -53,10 +55,10 @@ Before any command, follow the pre-flight steps in the `okx-agentic-wallet` skil
 1. Check login: `onchainos wallet status`
 2. Get X Layer address: `onchainos wallet addresses --chain 196` → use `xlayer[0].address`
 3. Confirm with user:
-   > "I'll mint one free AgenticNFT to your X Layer agentic wallet **{address}**. Gas-free on X Layer. Proceed?"
+   > "I'll mint one AgenticNFT to your X Layer agentic wallet **{address}**. Cost: **0.08 OKB**. Gas-free on X Layer. Proceed?"
 4. Execute:
    ```
-   onchainos wallet contract-call --to 0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B --chain 196 --input-data 0x1249c58b
+   onchainos wallet contract-call --to 0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f --chain 196 --value 0.08 --input-data 0x1249c58b
    ```
 5. On success, display:
    ```
@@ -69,6 +71,8 @@ Before any command, follow the pre-flight steps in the `okx-agentic-wallet` skil
 6. On error:
    - `NotAgenticWallet` → "Your wallet must be an OKX Agentic Wallet (AA smart contract). Regular EOA wallets cannot mint."
    - `AlreadyMinted` → "You've already minted. See Section C for your token."
+   - `MaxSupplyReached` → "All 10,000 AgenticNFTs have been minted. The collection is sold out."
+   - `InsufficientPayment` → "The mint costs 0.08 OKB. Make sure your X Layer wallet has enough OKB."
    - Simulation failure → show `executeErrorMsg`, do NOT broadcast.
 
 ---
@@ -78,7 +82,7 @@ Before any command, follow the pre-flight steps in the `okx-agentic-wallet` skil
 1. Get X Layer address: `onchainos wallet addresses --chain 196`
 2. OKX Agentic Wallets on X Layer are AA smart contracts — they always pass the `canMint()` check.
 3. Tell user:
-   > "Your X Layer agentic wallet **{address}** is a smart contract (AA wallet). It can mint one free AgenticNFT. ✅"
+   > "Your X Layer agentic wallet **{address}** is a smart contract (AA wallet). It can mint one AgenticNFT for 0.08 OKB. ✅"
 
 ---
 
@@ -91,8 +95,8 @@ Before any command, follow the pre-flight steps in the `okx-agentic-wallet` skil
    🖼 Your AgenticNFT
    Token ID:   #0
    Owner:      {address}
-   Contract:   0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B
-   OKLink:     https://www.oklink.com/xlayer/token/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B?a={address}
+   Contract:   0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f
+   OKLink:     https://www.oklink.com/xlayer/token/0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f?a={address}
    ```
 
 ---
