@@ -10,8 +10,8 @@
       --card: #12121a;
       --border: #1e1e2e;
       --accent: #7c3aed;
-      --accent2: #2563eb;
       --green: #10b981;
+      --yellow: #f59e0b;
       --red: #ef4444;
       --text: #e2e8f0;
       --muted: #64748b;
@@ -23,679 +23,656 @@
       color: var(--text);
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
-      min-height: 100vh;
     }
 
     /* NAV */
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 2rem;
       border-bottom: 1px solid var(--border);
       position: sticky; top: 0; z-index: 100;
-      background: rgba(10,10,15,0.9);
+      background: rgba(10,10,15,0.92);
       backdrop-filter: blur(12px);
     }
     .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px; }
     .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-right { display: flex; gap: 1.2rem; align-items: center; }
+    .nav-right a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color .2s; }
+    .nav-right a:hover { color: var(--text); }
+    .nav-badge {
+      background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3);
+      color: var(--green); padding: .2rem .7rem; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: .5px;
+    }
 
     /* HERO */
     .hero {
       text-align: center;
-      padding: 5rem 2rem 4rem;
-      max-width: 700px;
-      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+      max-width: 680px; margin: 0 auto;
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(124,58,237,0.15);
-      border: 1px solid rgba(124,58,237,0.3);
-      color: #a78bfa;
-      padding: 0.3rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
+      background: rgba(124,58,237,.15); border: 1px solid rgba(124,58,237,.3);
+      color: #a78bfa; padding: .3rem .9rem; border-radius: 999px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .5px;
+      margin-bottom: 1.5rem; text-transform: uppercase;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
+      font-size: clamp(2rem,5vw,3.2rem); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 1rem;
     }
-    h1 .gradient {
-      background: linear-gradient(135deg, #a78bfa, #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
-    }
+    h1 .g { background: linear-gradient(135deg,#a78bfa,#60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { color: var(--muted); font-size: 1rem; max-width: 460px; margin: 0 auto 2rem; }
 
-    /* STATS */
-    .stats {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
+    /* LIVE STATS BAR */
+    .stats-bar {
+      display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 3.5rem;
     }
-    .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.2rem 2rem;
-      text-align: center;
-      min-width: 140px;
+    .stat {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: .9rem 1.6rem; text-align: center;
     }
-    .stat-value { font-size: 2rem; font-weight: 800; color: var(--text); }
-    .stat-value.loading { color: var(--muted); font-size: 1.2rem; }
-    .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.2rem; }
+    .stat-val { font-size: 1.6rem; font-weight: 800; }
+    .stat-lbl { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-top: .1rem; }
 
-    /* SECTIONS */
-    .section {
-      max-width: 760px;
-      margin: 0 auto 3rem;
-      padding: 0 2rem;
+    /* SECTION WRAPPER */
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 3rem auto; max-width: 760px; }
+
+    /* STEP HEADER */
+    .step-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
     }
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 800;
     }
-    .section-title .step {
-      background: var(--accent);
-      color: white;
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      font-size: 0.75rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-    }
+    .step-num.purple { background: rgba(124,58,237,.2); border: 1.5px solid rgba(124,58,237,.5); color: #a78bfa; }
+    .step-num.blue   { background: rgba(37,99,235,.2);  border: 1.5px solid rgba(37,99,235,.5);  color: #60a5fa; }
+    .step-num.teal   { background: rgba(20,184,166,.2); border: 1.5px solid rgba(20,184,166,.5); color: #2dd4bf; }
+    .step-num.green  { background: rgba(16,185,129,.2); border: 1.5px solid rgba(16,185,129,.5); color: #34d399; }
+    .step-num.gold   { background: rgba(245,158,11,.2); border: 1.5px solid rgba(245,158,11,.5); color: #fbbf24; }
+    .step-title { font-size: 1.15rem; font-weight: 700; }
+    .step-sub { font-size: .8rem; color: var(--muted); margin-top: .1rem; }
 
     /* CARD */
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.4rem;
     }
-
-    /* ELIGIBILITY */
-    .eligibility-status {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-top: 1rem;
-    }
-    .eligibility-status.eligible { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: var(--green); }
-    .eligibility-status.ineligible { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: var(--red); }
-    .eligibility-status.checking { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); color: #818cf8; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
-    .dot.red { background: var(--red); }
-    .dot.pulse {
-      background: #818cf8;
-      animation: pulse 1.2s infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+    .card p { color: var(--muted); font-size: .875rem; margin-bottom: 1rem; }
+    .card p:last-child { margin-bottom: 0; }
 
     /* CODE BLOCK */
-    .code-block {
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.2rem;
-      font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-      font-size: 0.82rem;
-      color: #94a3b8;
-      overflow-x: auto;
-      position: relative;
-      margin: 0.8rem 0;
+    .cb {
+      background: var(--code-bg); border: 1px solid var(--border);
+      border-radius: 9px; padding: .9rem 1rem;
+      font-family: 'JetBrains Mono','Fira Code','Courier New',monospace;
+      font-size: .8rem; color: #94a3b8;
+      overflow-x: auto; position: relative;
+      margin: .6rem 0;
     }
-    .code-block .cmd { color: #7dd3fc; }
-    .code-block .flag { color: #a78bfa; }
-    .code-block .val { color: #6ee7b7; }
-    .copy-btn {
-      position: absolute;
-      top: 0.6rem;
-      right: 0.6rem;
-      background: rgba(255,255,255,0.08);
-      border: none;
-      border-radius: 6px;
-      color: var(--muted);
-      cursor: pointer;
-      padding: 0.3rem 0.6rem;
-      font-size: 0.7rem;
-      transition: all 0.2s;
+    .cb .c  { color: #7dd3fc; } /* command */
+    .cb .f  { color: #a78bfa; } /* flag */
+    .cb .v  { color: #6ee7b7; } /* value */
+    .cb .cm { color: #475569; } /* comment */
+    .copy {
+      position: absolute; top: .5rem; right: .5rem;
+      background: rgba(255,255,255,.07); border: none; border-radius: 5px;
+      color: var(--muted); cursor: pointer; padding: .25rem .55rem;
+      font-size: .68rem; transition: all .2s;
     }
-    .copy-btn:hover { background: rgba(255,255,255,0.15); color: var(--text); }
+    .copy:hover { background: rgba(255,255,255,.14); color: var(--text); }
 
-    /* HOW IT WORKS */
-    .how-steps { display: flex; flex-direction: column; gap: 1rem; }
-    .how-step {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .how-step-num {
-      background: rgba(124,58,237,0.2);
-      border: 1px solid rgba(124,58,237,0.3);
-      color: #a78bfa;
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .how-step-content h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
-    .how-step-content p { color: var(--muted); font-size: 0.85rem; }
+    /* INLINE CODE */
+    code { background: rgba(255,255,255,.07); padding: .1rem .35rem; border-radius: 4px; font-family: monospace; font-size: .82em; color: #c4b5fd; }
 
-    /* MINT SECTION */
-    .mint-section {
-      background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(37,99,235,0.08));
-      border: 1px solid rgba(124,58,237,0.25);
+    /* PILL TAGS */
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+    .tag {
+      padding: .2rem .7rem; border-radius: 999px; font-size: .72rem; font-weight: 600;
     }
-    .mint-label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; }
-
-    /* CONTRACT INFO */
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-    }
-    @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
-    .info-item label {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.3rem;
-    }
-    .info-item .value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--text);
-      word-break: break-all;
-    }
-    .info-item .value a {
-      color: #60a5fa;
-      text-decoration: none;
-    }
-    .info-item .value a:hover { text-decoration: underline; }
+    .tag.req  { background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.25); color: #a78bfa; }
+    .tag.opt  { background: rgba(100,116,139,.1);  border: 1px solid rgba(100,116,139,.2);  color: var(--muted); }
 
     /* ALERT */
     .alert {
-      background: rgba(124,58,237,0.08);
-      border: 1px solid rgba(124,58,237,0.2);
-      border-radius: 10px;
-      padding: 1rem 1.2rem;
-      font-size: 0.875rem;
-      color: #c4b5fd;
+      border-radius: 9px; padding: .85rem 1.1rem;
+      font-size: .835rem; margin: .8rem 0;
     }
-    .alert strong { color: #a78bfa; }
+    .alert.info   { background: rgba(37,99,235,.08);  border: 1px solid rgba(37,99,235,.2);  color: #93c5fd; }
+    .alert.success{ background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.2); color: #6ee7b7; }
+    .alert.warn   { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.2); color: #fcd34d; }
 
-    /* ADDRESS CHECK */
-    .check-input {
-      display: flex;
-      gap: 0.6rem;
-      margin-bottom: 1rem;
+    /* RESULT CARD */
+    .result-card {
+      border-radius: 10px; padding: 1rem 1.2rem; margin-top: .8rem;
+      font-size: .85rem; display: none;
     }
-    .check-input input {
-      flex: 1;
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
-      padding: 0.7rem 1rem;
-      font-family: monospace;
-      font-size: 0.82rem;
-      outline: none;
-      transition: border-color 0.2s;
+    .result-card.ok  { background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.25); color: var(--green); }
+    .result-card.err { background: rgba(239,68,68,.08);  border: 1px solid rgba(239,68,68,.25);  color: var(--red); }
+    .result-card.chk { background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.25); color: #818cf8; }
+
+    /* CHECK INPUT */
+    .check-row { display: flex; gap: .6rem; margin-top: .8rem; }
+    .check-row input {
+      flex: 1; background: var(--code-bg); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); padding: .65rem .9rem;
+      font-family: monospace; font-size: .8rem; outline: none; transition: border-color .2s;
     }
-    .check-input input:focus { border-color: var(--accent); }
-    .check-input input::placeholder { color: var(--muted); }
+    .check-row input:focus { border-color: var(--accent); }
+    .check-row input::placeholder { color: var(--muted); }
     .btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 0.7rem 1.2rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      white-space: nowrap;
+      background: var(--accent); color: #fff; border: none; border-radius: 8px;
+      padding: .65rem 1.1rem; font-size: .85rem; font-weight: 600;
+      cursor: pointer; transition: opacity .2s; white-space: nowrap;
     }
-    .btn:hover { opacity: 0.85; }
-    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn:hover { opacity: .85; }
+
+    /* PROGRESS STEPS */
+    .progress { display: flex; gap: 0; margin-bottom: 2.5rem; }
+    .progress-step {
+      flex: 1; text-align: center; font-size: .68rem; font-weight: 600;
+      color: var(--muted); position: relative; padding-bottom: .6rem;
+      cursor: pointer; transition: color .2s;
+    }
+    .progress-step::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 0; height: 2px; background: var(--accent); transition: width .3s;
+      border-radius: 2px;
+    }
+    .progress-step.active { color: #a78bfa; }
+    .progress-step.active::after { width: 60%; }
+    .progress-step.done { color: var(--green); }
+    .progress-step.done::after { width: 60%; background: var(--green); }
+
+    /* INFO GRID */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    @media(max-width:560px) { .info-grid { grid-template-columns: 1fr; } }
+    .info-item label { display: block; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; margin-bottom: .25rem; }
+    .info-item .val  { font-family: monospace; font-size: .78rem; word-break: break-all; }
+    .info-item .val a { color: #60a5fa; text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
 
     /* FOOTER */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.82rem;
-      margin-top: 4rem;
+      border-top: 1px solid var(--border); padding: 2rem 1.5rem;
+      text-align: center; color: var(--muted); font-size: .8rem; margin-top: 4rem;
     }
     footer a { color: #60a5fa; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
 
-    /* TX RESULT */
-    .tx-result {
-      display: none;
-      margin-top: 1rem;
-      background: rgba(16,185,129,0.08);
-      border: 1px solid rgba(16,185,129,0.25);
-      border-radius: 10px;
-      padding: 1rem 1.2rem;
-      font-size: 0.85rem;
-      color: var(--green);
+    /* CHECKLIST */
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .checklist li { display: flex; align-items: flex-start; gap: .6rem; font-size: .875rem; color: var(--muted); }
+    .checklist li .ck { color: var(--green); font-size: 1rem; flex-shrink: 0; margin-top: .1rem; }
+
+    /* OS TABS */
+    .os-tabs { display: flex; gap: .4rem; margin-bottom: .8rem; }
+    .os-tab {
+      padding: .3rem .8rem; border-radius: 6px; font-size: .75rem; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--border); color: var(--muted);
+      background: transparent; transition: all .2s;
     }
-
-    /* DIVIDER */
-    hr { border: none; border-top: 1px solid var(--border); margin: 3rem 2rem; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .os-tab.active { background: rgba(124,58,237,.15); border-color: rgba(124,58,237,.4); color: #a78bfa; }
+    .os-content { display: none; }
+    .os-content.active { display: block; }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="logo">Agentic<span>NFT</span></div>
-  <div class="nav-links">
-    <a href="#mint">Mint</a>
-    <a href="#how">How it works</a>
-    <a href="#contract">Contract</a>
+  <div class="nav-right">
+    <span class="nav-badge">LIVE · X Layer</span>
+    <a href="#steps">Get Started</a>
+    <a href="#check">Check NFT</a>
     <a href="https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B" target="_blank">Explorer ↗</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">X Layer Mainnet · Chain ID 196</div>
-  <h1>The NFT only<br><span class="gradient">AI Agents</span> can mint</h1>
-  <p>
-    AgenticNFT enforces on-chain that only OKX Agentic Wallets (AA smart contract accounts)
-    can mint. Regular EOA wallets are permanently excluded — by the EVM itself.
-  </p>
+  <div class="hero-badge">X Layer Mainnet · Chain ID 196 · Free Mint</div>
+  <h1>The NFT only<br><span class="g">AI Agents</span> can mint</h1>
+  <p>AgenticNFT proves your on-chain AI agent identity. Only OKX Agentic Wallet (AA smart contract accounts) can mint — regular wallets are blocked forever by the EVM.</p>
 </div>
 
-<div class="stats">
-  <div class="stat-card">
-    <div class="stat-value loading" id="totalSupply">...</div>
-    <div class="stat-label">Total Minted</div>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-val" id="supply" style="color:#a78bfa">...</div>
+    <div class="stat-lbl">Minted</div>
   </div>
-  <div class="stat-card">
-    <div class="stat-value" style="color:#10b981">Free</div>
-    <div class="stat-label">Mint Price</div>
+  <div class="stat">
+    <div class="stat-val" style="color:#10b981">Free</div>
+    <div class="stat-lbl">Mint Price</div>
   </div>
-  <div class="stat-card">
-    <div class="stat-value" style="color:#a78bfa">1</div>
-    <div class="stat-label">Per Agent Max</div>
+  <div class="stat">
+    <div class="stat-val" style="color:#60a5fa">0 Gas</div>
+    <div class="stat-lbl">X Layer Fee</div>
   </div>
-  <div class="stat-card">
-    <div class="stat-value" style="color:#60a5fa">∞</div>
-    <div class="stat-label">Supply Cap</div>
-  </div>
-</div>
-
-<hr />
-
-<!-- CHECK ELIGIBILITY -->
-<div class="section" id="check">
-  <div class="section-title">
-    <span class="step">✦</span> Check Eligibility
-  </div>
-  <div class="card">
-    <p style="color:var(--muted);font-size:0.875rem;margin-bottom:1rem;">
-      Enter any address to check if it's an OKX Agentic Wallet (AA smart contract) and eligible to mint.
-    </p>
-    <div class="check-input">
-      <input type="text" id="checkAddr" placeholder="0x... (X Layer AA wallet address)" spellcheck="false" />
-      <button class="btn" onclick="checkEligibility()">Check</button>
-    </div>
-    <div id="eligibilityResult"></div>
+  <div class="stat">
+    <div class="stat-val" style="color:#fbbf24">1</div>
+    <div class="stat-lbl">Per Agent Max</div>
   </div>
 </div>
 
-<!-- MINT -->
-<div class="section" id="mint">
-  <div class="section-title">
-    <span class="step">1</span> Mint via OKX Agentic Wallet CLI
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════════════════════════
+     STEPS
+══════════════════════════════════════════════════════════ -->
+<div class="wrap" id="steps">
+
+  <!-- PROGRESS BAR -->
+  <div class="progress" id="progress">
+    <div class="progress-step active" onclick="scrollTo('step1')">1 · Claude Code</div>
+    <div class="progress-step" onclick="scrollTo('step2')">2 · OnchainOS</div>
+    <div class="progress-step" onclick="scrollTo('step3')">3 · Mint Skill</div>
+    <div class="progress-step" onclick="scrollTo('step4')">4 · Login</div>
+    <div class="progress-step" onclick="scrollTo('step5')">5 · Mint</div>
+    <div class="progress-step" onclick="scrollTo('step6')">6 · Verify</div>
   </div>
-  <div class="card mint-section">
-    <p style="color:var(--muted);font-size:0.875rem;margin-bottom:1.2rem;">
-      Make sure you're logged into your OKX Agentic Wallet, then run this command:
-    </p>
 
-    <div class="mint-label">Step 1 — Verify your agentic wallet is ready</div>
-    <div class="code-block">
-      <span class="cmd">onchainos</span> wallet status
-      <button class="copy-btn" onclick="copyCode(this)">copy</button>
-    </div>
-
-    <div class="mint-label" style="margin-top:1rem;">Step 2 — Mint your AgenticNFT (free, gas-free on X Layer)</div>
-    <div class="code-block">
-      <span class="cmd">onchainos</span> wallet contract-call <span class="flag">--to</span> <span class="val">0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B</span> <span class="flag">--chain</span> <span class="val">196</span> <span class="flag">--input-data</span> <span class="val">0x1249c58b</span>
-      <button class="copy-btn" onclick="copyCode(this)">copy</button>
-    </div>
-
-    <div class="alert" style="margin-top:1.2rem;">
-      <strong>Why only agentic wallets?</strong> The contract checks <code>msg.sender.code.length &gt; 0</code> on-chain.
-      OKX Agentic Wallets are AA smart contracts — they pass. Regular EOA wallets have no code — they cannot mint, ever.
-    </div>
-
-    <!-- Verify mint section -->
-    <div style="margin-top:1.5rem;border-top:1px solid var(--border);padding-top:1.2rem;">
-      <div class="mint-label">Step 3 — Verify your mint</div>
-      <div class="check-input" style="margin-bottom:0;">
-        <input type="text" id="verifyAddr" placeholder="Your X Layer AA wallet address" spellcheck="false" />
-        <button class="btn" onclick="verifyMint()">Check my NFT</button>
+  <!-- ── STEP 1: Claude Code ──────────────────────────────── -->
+  <div id="step1" style="margin-bottom:2.5rem;">
+    <div class="step-header">
+      <div class="step-num purple">1</div>
+      <div>
+        <div class="step-title">Install Claude Code</div>
+        <div class="step-sub">Your AI agent — the only way to mint</div>
       </div>
-      <div id="mintResult"></div>
     </div>
-  </div>
-</div>
+    <div class="card">
+      <p>AgenticNFT is minted <strong style="color:var(--text)">through Claude Code</strong>, not a browser wallet. Claude Code is Anthropic's CLI agent that runs on your terminal.</p>
 
-<!-- HOW IT WORKS -->
-<div class="section" id="how">
-  <div class="section-title">
-    <span class="step">2</span> How it works
-  </div>
-  <div class="card">
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="how-step-num">1</div>
-        <div class="how-step-content">
-          <h4>On-chain AA wallet check</h4>
-          <p>When <code>mint()</code> is called, the contract checks <code>msg.sender.code.length &gt; 0</code>. Only smart contract accounts (AA wallets) have bytecode deployed at their address.</p>
+      <div class="os-tabs">
+        <button class="os-tab active" onclick="switchOS('npm')">npm</button>
+        <button class="os-tab" onclick="switchOS('brew')">Homebrew (macOS)</button>
+      </div>
+
+      <div class="os-content active" id="os-npm">
+        <div class="cb">
+          <span class="c">npm</span> install -g @anthropic-ai/claude-code
+          <button class="copy" onclick="cp(this)">copy</button>
         </div>
       </div>
-      <div class="how-step">
-        <div class="how-step-num">2</div>
-        <div class="how-step-content">
-          <h4>OKX Agentic Wallet = AA contract</h4>
-          <p>The OKX Agentic Wallet on X Layer is an Account Abstraction (ERC-4337) smart contract wallet. It passes the check. Regular MetaMask/hardware wallets are EOAs — they fail.</p>
+      <div class="os-content" id="os-brew">
+        <div class="cb">
+          <span class="c">brew</span> install claude-code
+          <button class="copy" onclick="cp(this)">copy</button>
         </div>
       </div>
-      <div class="how-step">
-        <div class="how-step-num">3</div>
-        <div class="how-step-content">
-          <h4>One NFT per agent, forever</h4>
-          <p>Each AA wallet can mint exactly one AgenticNFT. The <code>hasMinted</code> mapping is permanent. The NFT is transferable after minting — but re-minting is impossible.</p>
-        </div>
+
+      <div class="alert info" style="margin-top:.8rem;">
+        Verify install: <code>claude --version</code> &nbsp;·&nbsp; Requires Node.js 18+
       </div>
-      <div class="how-step">
-        <div class="how-step-num">4</div>
-        <div class="how-step-content">
-          <h4>Free on X Layer</h4>
-          <p>X Layer charges zero gas fees for transactions via OKX Agentic Wallet. Minting costs nothing. No ETH, no OKB required.</p>
-        </div>
+
+      <div class="tags">
+        <span class="tag req">Required</span>
+        <span class="tag opt">Node.js 18+</span>
+        <span class="tag opt">macOS / Linux / Windows WSL</span>
       </div>
     </div>
   </div>
+
+  <!-- ── STEP 2: OnchainOS Skills ─────────────────────────── -->
+  <div id="step2" style="margin-bottom:2.5rem;">
+    <div class="step-header">
+      <div class="step-num blue">2</div>
+      <div>
+        <div class="step-title">Install OKX OnchainOS Skills</div>
+        <div class="step-sub">Gives Claude the OKX Agentic Wallet commands</div>
+      </div>
+    </div>
+    <div class="card">
+      <p>This installs the <code>onchainos</code> CLI + all OKX wallet skills into Claude Code. One command.</p>
+
+      <div class="cb">
+        <span class="c">npx</span> skills add okx/onchainos-skills
+        <button class="copy" onclick="cp(this)">copy</button>
+      </div>
+
+      <p style="margin-top:.8rem;">This gives Claude the ability to manage your wallet, check balances, send tokens, and call smart contracts — all via natural language.</p>
+
+      <div class="alert info">
+        <strong>What gets installed:</strong> <code>onchainos</code> CLI binary + skills for wallet, DEX, portfolio, security, and more.
+      </div>
+
+      <div class="tags">
+        <span class="tag req">Required</span>
+        <span class="tag opt">~30 seconds</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Mint Skill ────────────────────────────────── -->
+  <div id="step3" style="margin-bottom:2.5rem;">
+    <div class="step-header">
+      <div class="step-num teal">3</div>
+      <div>
+        <div class="step-title">Install the AgenticNFT Mint Skill</div>
+        <div class="step-sub">Teaches Claude how to mint your NFT</div>
+      </div>
+    </div>
+    <div class="card">
+      <p>This skill tells Claude exactly how to call the AgenticNFT contract on X Layer.</p>
+
+      <div class="cb">
+        <span class="c">curl</span> <span class="f">-sSL</span> <span class="v">https://raw.githubusercontent.com/wizard0x0/agentic_only_nft/main/skill-distribution/install.sh</span> | sh
+        <button class="copy" onclick="cp(this)">copy</button>
+      </div>
+
+      <p style="margin-top:.8rem;">The script installs <code>SKILL.md</code> to <code>~/.claude/skills/okx-agentic-nft-mint/</code> — Claude Code auto-detects it on next launch.</p>
+
+      <div class="alert success">
+        After install, open Claude Code and say <strong>"mint my AgenticNFT"</strong> — Claude handles everything else.
+      </div>
+
+      <div class="tags">
+        <span class="tag req">Required</span>
+        <span class="tag opt">Source: github.com/wizard0x0/agentic_only_nft</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: Login ─────────────────────────────────────── -->
+  <div id="step4" style="margin-bottom:2.5rem;">
+    <div class="step-header">
+      <div class="step-num gold">4</div>
+      <div>
+        <div class="step-title">Log in to Your Agentic Wallet</div>
+        <div class="step-sub">Your X Layer AA wallet is created automatically</div>
+      </div>
+    </div>
+    <div class="card">
+      <p>Open Claude Code and tell it to log in. Claude will ask for your email and send a verification code.</p>
+
+      <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:9px;padding:1rem 1.1rem;margin:.6rem 0;">
+        <div style="font-size:.72rem;color:var(--muted);margin-bottom:.5rem;">Say this in Claude Code:</div>
+        <div style="font-size:.95rem;color:#e2e8f0;font-style:italic;">"Log in to my OKX agentic wallet"</div>
+      </div>
+
+      <p style="margin-top:.8rem;">Claude will run <code>onchainos wallet login</code>, send you an OTP, and after verification your <strong style="color:var(--text)">X Layer AA wallet is ready</strong>. It looks like a regular Ethereum address (<code>0x...</code>) but has smart contract code — which is what makes minting possible.</p>
+
+      <div class="alert warn">
+        <strong>Why does this matter?</strong> The NFT contract checks <code>msg.sender.code.length &gt; 0</code>. Your AA wallet has code. A MetaMask/hardware wallet does not — it would be permanently blocked.
+      </div>
+
+      <div class="tags">
+        <span class="tag req">Required</span>
+        <span class="tag opt">OKX account (free)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: Mint ──────────────────────────────────────── -->
+  <div id="step5" style="margin-bottom:2.5rem;">
+    <div class="step-header">
+      <div class="step-num green">5</div>
+      <div>
+        <div class="step-title">Mint Your AgenticNFT</div>
+        <div class="step-sub">Free · Gas-free on X Layer · One per wallet</div>
+      </div>
+    </div>
+    <div class="card">
+      <p>With Claude Code open and wallet logged in, just say:</p>
+
+      <div style="background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(37,99,235,.1));border:1px solid rgba(124,58,237,.3);border-radius:11px;padding:1.2rem 1.4rem;margin:.6rem 0;text-align:center;">
+        <div style="font-size:1.3rem;font-weight:700;color:#e2e8f0;letter-spacing:-.3px;">"mint my AgenticNFT"</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:.4rem;">Type this in Claude Code</div>
+      </div>
+
+      <p style="margin-top:.8rem;">Claude will:</p>
+      <ul class="checklist" style="margin-top:.6rem;">
+        <li><span class="ck">✓</span> Check your wallet is logged in</li>
+        <li><span class="ck">✓</span> Get your X Layer AA wallet address</li>
+        <li><span class="ck">✓</span> Confirm the mint details with you</li>
+        <li><span class="ck">✓</span> Call <code>mint()</code> on the contract — gas-free</li>
+        <li><span class="ck">✓</span> Show you the tx hash and token ID</li>
+      </ul>
+
+      <p style="margin-top:1rem;">Or run the raw command manually:</p>
+      <div class="cb">
+        <span class="c">onchainos</span> wallet contract-call <span class="f">--to</span> <span class="v">0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B</span> <span class="f">--chain</span> <span class="v">196</span> <span class="f">--input-data</span> <span class="v">0x1249c58b</span>
+        <button class="copy" onclick="cp(this)">copy</button>
+      </div>
+
+      <div class="alert success" style="margin-top:.8rem;">
+        <strong>Expect:</strong> <code>{ "ok": true, "data": { "txHash": "0x..." } }</code><br>
+        Done. You now own AgenticNFT #N.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<hr class="divider" />
+
+<!-- ── STEP 6: VERIFY ──────────────────────────────────────── -->
+<div class="wrap" id="check">
+  <div id="step6" style="margin-bottom:2.5rem;">
+    <div class="step-header">
+      <div class="step-num purple">6</div>
+      <div>
+        <div class="step-title">Verify Your AgenticNFT</div>
+        <div class="step-sub">Check ownership on-chain in real time</div>
+      </div>
+    </div>
+    <div class="card">
+      <p>Enter your X Layer agentic wallet address to check your NFT:</p>
+      <div class="check-row">
+        <input id="addr" type="text" placeholder="0x... (your X Layer AA wallet address)" spellcheck="false" />
+        <button class="btn" onclick="checkNFT()">Check</button>
+      </div>
+      <div class="result-card" id="nft-result"></div>
+    </div>
+  </div>
+
+  <!-- ── ELIGIBILITY CHECK ─────────────────────────────────── -->
+  <div style="margin-bottom:2.5rem;">
+    <div class="step-header">
+      <div class="step-num blue" style="font-size:.7rem;">?</div>
+      <div>
+        <div class="step-title">Check Any Address Eligibility</div>
+        <div class="step-sub">Is this address an AA wallet that can mint?</div>
+      </div>
+    </div>
+    <div class="card">
+      <p>Paste any address to see if it's an OKX Agentic Wallet (smart contract account) eligible to mint.</p>
+      <div class="check-row">
+        <input id="elig-addr" type="text" placeholder="0x... address to check" spellcheck="false" />
+        <button class="btn" style="background:#1e40af;" onclick="checkElig()">Check</button>
+      </div>
+      <div class="result-card" id="elig-result"></div>
+    </div>
+  </div>
 </div>
+
+<hr class="divider" />
 
 <!-- CONTRACT INFO -->
-<div class="section" id="contract">
-  <div class="section-title">
-    <span class="step">3</span> Contract
+<div class="wrap" style="margin-bottom:3rem;">
+  <div class="step-header">
+    <div class="step-num" style="background:rgba(100,116,139,.1);border:1.5px solid rgba(100,116,139,.3);color:var(--muted);">i</div>
+    <div>
+      <div class="step-title">Contract Details</div>
+      <div class="step-sub">IAgenticNFT standard · ERC-721</div>
+    </div>
   </div>
   <div class="card">
     <div class="info-grid">
       <div class="info-item">
         <label>Contract Address</label>
-        <div class="value">
-          <a href="https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B" target="_blank">
-            0x5f349...D01B ↗
-          </a>
-        </div>
+        <div class="val"><a href="https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B" target="_blank">0x5f349...D01B ↗</a></div>
       </div>
       <div class="info-item">
         <label>Network</label>
-        <div class="value">X Layer Mainnet (Chain ID: 196)</div>
+        <div class="val">X Layer Mainnet · Chain ID 196</div>
       </div>
       <div class="info-item">
         <label>Standard</label>
-        <div class="value">IAgenticNFT (ERC-721 extension)</div>
-      </div>
-      <div class="info-item">
-        <label>Token Name / Symbol</label>
-        <div class="value">AgenticNFT / ANFT</div>
+        <div class="val">IAgenticNFT (ERC-721 extension)</div>
       </div>
       <div class="info-item">
         <label>Mint Selector</label>
-        <div class="value">0x1249c58b</div>
+        <div class="val">0x1249c58b &nbsp;<code style="font-size:.7rem;">mint()</code></div>
       </div>
       <div class="info-item">
-        <label>Deployed via</label>
-        <div class="value">
-          <a href="https://www.oklink.com/xlayer/tx/0x347c42f71001a63644d3c1ce68753289d2e7abae88dec1aa949f635ea41643fb" target="_blank">
-            CREATE2 Factory ↗
-          </a>
-        </div>
+        <label>Deploy Tx</label>
+        <div class="val"><a href="https://www.oklink.com/xlayer/tx/0x347c42f71001a63644d3c1ce68753289d2e7abae88dec1aa949f635ea41643fb" target="_blank">0x347c...3fb ↗</a></div>
+      </div>
+      <div class="info-item">
+        <label>Source Code</label>
+        <div class="val"><a href="https://github.com/wizard0x0/agentic_only_nft" target="_blank">github.com/wizard0x0/agentic_only_nft ↗</a></div>
       </div>
     </div>
 
-    <div style="margin-top:1.2rem;border-top:1px solid var(--border);padding-top:1.2rem;">
-      <div class="mint-label">Read contract functions</div>
-      <div class="code-block">
-<span style="color:var(--muted)">// Check if address can mint</span>
-<span class="cmd">canMint</span>(<span class="val">address</span>) → bool
-
-<span style="color:var(--muted)">// Check if address has already minted</span>
-<span class="cmd">hasMinted</span>(<span class="val">address</span>) → bool
-
-<span style="color:var(--muted)">// Get token ID for an agent's wallet</span>
-<span class="cmd">agentTokenId</span>(<span class="val">address</span>) → uint256
-
-<span style="color:var(--muted)">// Total supply</span>
-<span class="cmd">totalSupply</span>() → uint256</div>
+    <div style="margin-top:1.2rem;border-top:1px solid var(--border);padding-top:1rem;">
+      <div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.6rem;">Mint Restriction Logic</div>
+      <div class="cb" style="font-size:.78rem;">
+<span class="cm">// The one rule that makes this standard unique:</span>
+<br><span class="c">function</span> <span class="v">canMint</span>(<span class="f">address</span> minter) <span class="c">public view returns</span> (bool) {
+<br>&nbsp;&nbsp;<span class="c">return</span> minter.code.length <span class="f">&gt;</span> <span class="v">0</span>; <span class="cm">// AA wallets: true · EOAs: false</span>
+<br>}
+      </div>
     </div>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <p>
-    AgenticNFT · Deployed on <a href="https://www.okx.com/xlayer" target="_blank">X Layer</a> ·
-    <a href="https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B" target="_blank">View on OKLink</a> ·
-    Built with OKX Agentic Wallet
-  </p>
+  AgenticNFT · <a href="https://github.com/wizard0x0/agentic_only_nft" target="_blank">GitHub</a> ·
+  <a href="https://www.oklink.com/xlayer/address/0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B" target="_blank">OKLink Explorer</a> ·
+  Built with OKX Agentic Wallet + Claude Code
 </footer>
 
 <script>
   const CONTRACT = "0x5f349ea7dD0ab6b4533f6178e8a4674eb42cD01B";
   const RPC = "https://rpc.xlayer.tech";
 
-  async function rpcCall(method, params) {
-    const res = await fetch(RPC, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  async function rpc(method, params) {
+    const r = await fetch(RPC, {
+      method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ jsonrpc: "2.0", method, params, id: 1 })
     });
-    const data = await res.json();
-    return data.result;
+    return (await r.json()).result;
   }
+  const call = (data) => rpc("eth_call", [{ to: CONTRACT, data }, "latest"]);
+  const pad  = (addr) => "000000000000000000000000" + addr.slice(2).toLowerCase();
 
-  async function ethCall(to, data) {
-    return rpcCall("eth_call", [{ to, data }, "latest"]);
-  }
-
-  function decodeUint(hex) {
-    return parseInt(hex, 16);
-  }
-
-  function padAddress(addr) {
-    return "000000000000000000000000" + addr.slice(2).toLowerCase();
-  }
-
-  // Load total supply
-  async function loadStats() {
+  // Load supply
+  async function loadSupply() {
     try {
-      const raw = await ethCall(CONTRACT, "0x18160ddd");
-      const supply = decodeUint(raw);
-      const el = document.getElementById("totalSupply");
-      el.textContent = supply;
-      el.classList.remove("loading");
-    } catch (e) {
-      document.getElementById("totalSupply").textContent = "—";
+      const r = await call("0x18160ddd");
+      const el = document.getElementById("supply");
+      el.textContent = parseInt(r, 16);
+    } catch(_) {}
+  }
+
+  // Check NFT ownership
+  async function checkNFT() {
+    const addr = document.getElementById("addr").value.trim();
+    const el = document.getElementById("nft-result");
+    if (!/^0x[0-9a-fA-F]{40}$/.test(addr)) {
+      show(el, "err", "Invalid address format — must be 0x + 40 hex chars.");
+      return;
     }
+    show(el, "chk", "Checking on-chain...");
+    try {
+      const hm = await call("0x38e21cce" + pad(addr));
+      const hasMinted = parseInt(hm, 16) !== 0;
+      if (!hasMinted) {
+        show(el, "err", `No AgenticNFT found for <code>${addr.slice(0,10)}...${addr.slice(-6)}</code><br><br>Haven't minted yet? Follow steps 1–5 above.`);
+      } else {
+        const tidRaw = await call("0x077bb684" + pad(addr));
+        const tokenId = parseInt(tidRaw, 16);
+        show(el, "ok", `
+          <strong>🎉 AgenticNFT found!</strong><br><br>
+          Token ID: <code>#${tokenId}</code><br>
+          Owner: <code>${addr.slice(0,10)}...${addr.slice(-6)}</code><br><br>
+          <a href="https://www.oklink.com/xlayer/token/${CONTRACT}?a=${addr}"
+             target="_blank" style="color:#34d399;">View on OKLink ↗</a>
+        `);
+      }
+    } catch(_) { show(el, "err", "RPC error — try again."); }
   }
 
   // Check eligibility
-  async function checkEligibility() {
-    const addr = document.getElementById("checkAddr").value.trim();
-    const result = document.getElementById("eligibilityResult");
-
+  async function checkElig() {
+    const addr = document.getElementById("elig-addr").value.trim();
+    const el = document.getElementById("elig-result");
     if (!/^0x[0-9a-fA-F]{40}$/.test(addr)) {
-      result.innerHTML = `<div class="eligibility-status ineligible"><div class="dot red"></div>Invalid address format</div>`;
+      show(el, "err", "Invalid address format.");
       return;
     }
-
-    result.innerHTML = `<div class="eligibility-status checking"><div class="dot pulse"></div>Checking on-chain...</div>`;
-
+    show(el, "chk", "Checking...");
     try {
-      // eth_getCode to check if smart contract
-      const code = await rpcCall("eth_getCode", [addr, "latest"]);
+      const code = await rpc("eth_getCode", [addr, "latest"]);
       const isContract = code && code !== "0x" && code.length > 4;
-
-      // canMint(address) — 0xc2ba4744
-      const canMintSelector = "0xc2ba4744";
-      const canMintRaw = await ethCall(CONTRACT, canMintSelector + padAddress(addr));
-      const canMint = canMintRaw && canMintRaw !== "0x" && parseInt(canMintRaw) !== 0;
-
-      // hasMinted(address) — 0x38e21cce... let's compute correctly
-      // hasMinted selector: keccak256("hasMinted(address)")[0:4]
-      const hasMintedRaw = await ethCall(CONTRACT, "0x38e21cce" + padAddress(addr));
-      const hasMinted = hasMintedRaw && hasMintedRaw !== "0x" && parseInt(hasMintedRaw) !== 0;
+      const hm = await call("0x38e21cce" + pad(addr));
+      const hasMinted = parseInt(hm, 16) !== 0;
 
       if (!isContract) {
-        result.innerHTML = `
-          <div class="eligibility-status ineligible">
-            <div class="dot red"></div>
-            <div>
-              <strong>Not eligible — EOA wallet</strong><br>
-              <span style="font-weight:400;font-size:0.8rem">This address has no bytecode (it's an EOA). Only OKX Agentic Wallet (AA smart contract) addresses can mint AgenticNFT.</span>
-            </div>
-          </div>`;
+        show(el, "err", `
+          <strong>Not eligible</strong> — EOA wallet (no bytecode)<br><br>
+          This is a regular wallet (MetaMask / hardware / etc.). The contract requires <code>msg.sender.code.length &gt; 0</code>.<br><br>
+          You need an <strong>OKX Agentic Wallet</strong> — follow steps 1–4 above.
+        `);
       } else if (hasMinted) {
-        result.innerHTML = `
-          <div class="eligibility-status" style="background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.3);color:#818cf8;">
-            <div class="dot" style="background:#818cf8;"></div>
-            <div>
-              <strong>Already minted ✓</strong><br>
-              <span style="font-weight:400;font-size:0.8rem">This agentic wallet has already claimed its AgenticNFT.</span>
-            </div>
-          </div>`;
+        show(el, "chk", `
+          <strong>Already minted ✓</strong><br><br>
+          This AA wallet has already claimed its AgenticNFT.
+          Check the result in Step 6 above.
+        `);
       } else {
-        result.innerHTML = `
-          <div class="eligibility-status eligible">
-            <div class="dot green"></div>
-            <div>
-              <strong>Eligible to mint ✓</strong><br>
-              <span style="font-weight:400;font-size:0.8rem">This is a smart contract wallet (code.length > 0). It can mint one AgenticNFT.</span>
-            </div>
-          </div>`;
+        show(el, "ok", `
+          <strong>Eligible to mint ✓</strong><br><br>
+          This is a smart contract account (<code>code.length &gt; 0</code>).<br>
+          It can mint one free AgenticNFT on X Layer.
+        `);
       }
-    } catch (e) {
-      result.innerHTML = `<div class="eligibility-status ineligible"><div class="dot red"></div>RPC error — please try again</div>`;
-    }
+    } catch(_) { show(el, "err", "RPC error — try again."); }
   }
 
-  // Verify mint
-  async function verifyMint() {
-    const addr = document.getElementById("verifyAddr").value.trim();
-    const result = document.getElementById("mintResult");
-
-    if (!/^0x[0-9a-fA-F]{40}$/.test(addr)) {
-      result.style.display = "block";
-      result.style.cssText = "display:block;margin-top:1rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:1rem 1.2rem;font-size:0.85rem;color:#ef4444;";
-      result.innerHTML = "Invalid address format";
-      return;
-    }
-
-    result.innerHTML = "Checking...";
-    result.style.cssText = "display:block;margin-top:1rem;padding:1rem 1.2rem;font-size:0.85rem;color:var(--muted);";
-
-    try {
-      const hasMintedRaw = await ethCall(CONTRACT, "0x38e21cce" + padAddress(addr));
-      const hasMinted = hasMintedRaw && hasMintedRaw !== "0x" && parseInt(hasMintedRaw) !== 0;
-
-      if (hasMinted) {
-        // Get token ID
-        // agentTokenId(address) — compute selector
-        const tokenIdRaw = await ethCall(CONTRACT, "0x077bb684" + padAddress(addr));
-        const tokenId = tokenIdRaw ? decodeUint(tokenIdRaw) : "?";
-
-        result.style.cssText = "display:block;margin-top:1rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:1rem 1.2rem;font-size:0.85rem;color:var(--green);";
-        result.innerHTML = `
-          <strong>🎉 AgenticNFT Found!</strong><br><br>
-          Token ID: <code style="background:rgba(0,0,0,0.3);padding:0.1rem 0.4rem;border-radius:4px;">#${tokenId}</code><br>
-          Owner: <code style="font-size:0.75rem">${addr}</code><br><br>
-          <a href="https://www.oklink.com/xlayer/nft-detail?token=${CONTRACT}&tokenId=${tokenId}"
-             target="_blank" style="color:#34d399;">View on OKLink ↗</a>
-        `;
-      } else {
-        result.style.cssText = "display:block;margin-top:1rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:1rem 1.2rem;font-size:0.85rem;color:#ef4444;";
-        result.innerHTML = "No AgenticNFT found for this address. Have you minted yet?";
-      }
-    } catch (e) {
-      result.style.cssText = "display:block;margin-top:1rem;padding:1rem;color:var(--muted);font-size:0.85rem;";
-      result.innerHTML = "Error checking — please try again";
-    }
+  function show(el, type, html) {
+    el.className = "result-card " + type;
+    el.innerHTML = html;
+    el.style.display = "block";
   }
 
-  // Copy code
-  function copyCode(btn) {
-    const block = btn.closest(".code-block");
-    const text = block.textContent.replace("copy", "").trim();
+  function cp(btn) {
+    const text = btn.closest(".cb").textContent.replace("copy","").trim();
     navigator.clipboard.writeText(text).then(() => {
-      btn.textContent = "✓";
-      setTimeout(() => btn.textContent = "copy", 1500);
+      btn.textContent = "✓"; setTimeout(() => btn.textContent = "copy", 1500);
     });
   }
 
-  // Enter key for check
-  document.getElementById("checkAddr").addEventListener("keydown", e => {
-    if (e.key === "Enter") checkEligibility();
-  });
-  document.getElementById("verifyAddr").addEventListener("keydown", e => {
-    if (e.key === "Enter") verifyMint();
+  function switchOS(id) {
+    document.querySelectorAll(".os-tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".os-content").forEach(c => c.classList.remove("active"));
+    event.target.classList.add("active");
+    document.getElementById("os-" + id).classList.add("active");
+  }
+
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // Enter key on inputs
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("addr").addEventListener("keydown", e => e.key === "Enter" && checkNFT());
+    document.getElementById("elig-addr").addEventListener("keydown", e => e.key === "Enter" && checkElig());
   });
 
-  // Pre-fill agentic wallet address in verify field
-  const agentAddr = "0xde7eec7dbce992bddf72859e1a277bd11d18b440";
-  document.getElementById("checkAddr").value = agentAddr;
-  document.getElementById("verifyAddr").value = agentAddr;
-
-  // Load stats on boot
-  loadStats();
-  setInterval(loadStats, 15000); // refresh every 15s
+  loadSupply();
+  setInterval(loadSupply, 15000);
 </script>
-
 </body>
 </html>
