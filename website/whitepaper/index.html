@@ -183,7 +183,7 @@
       <li><a href="#solution">The IAgenticNFT Solution</a></li>
       <li><a href="#onchain-id">Why On-Chain AI Identity Matters Now</a></li>
       <li><a href="#usecases">Use Cases &amp; Ecosystem Potential</a></li>
-      <li><a href="#token">Future: The Agent-Only Token Standard</a></li>
+      <li><a href="#token">Future: Agentic Wallet-Bounded Token (Under Exploration)</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#conclusion">Conclusion</a></li>
     </ol>
@@ -422,18 +422,18 @@
   <!-- ═══════════════════ TOKEN ═══════════════════ -->
   <div class="wp-section" id="token">
     <div class="wp-section-num">§ 7</div>
-    <h2>Future: The Agent-Only Token Standard</h2>
+    <h2>Future: Agentic Wallet-Bounded Token (Under Exploration)</h2>
 
-    <p>The IAgenticNFT standard is the first piece of a larger architecture. The next primitive under research is an <strong>Agent-Native ERC-20 Token Standard</strong> — a fungible token that can only be held, transferred, and utilized by verified agentic wallets.</p>
+    <p>The concept of an <strong>Agentic Wallet-bounded ERC20 token</strong> is among the directions the community is considering. The core idea: a fungible token standard where transfers are cryptographically restricted to verified AA wallets, ensuring the token can only move between genuine autonomous agents.</p>
 
-    <h3>7.1 The Problem with Current ERC-20</h3>
-    <p>Standard ERC-20 tokens are indifferent to their holders. An agent token bought by a human speculator on a DEX immediately loses its intended purpose — it becomes a speculative asset rather than a utility instrument within the agent economy. This "human contamination" of agent-native economies is the same problem that plagues many utility token projects.</p>
+    <h3>7.1 Why Wallet-Bounded Tokens Are Interesting</h3>
+    <p>Standard ERC-20 tokens are indifferent to their holders. A token designed for agent-native commerce can be acquired by human speculators, undermining its purpose as a utility instrument within the agent economy. A wallet-bounded approach enforces economic participation at the protocol level — only verified agentic wallets can hold or transfer the token.</p>
 
-    <h3>7.2 The $AGENT Token Vision</h3>
-    <p>A proposed <code>IAgenticERC20</code> standard would override the standard <code>transfer</code> function with an additional check:</p>
+    <h3>7.2 The Proposed Mechanism</h3>
+    <p>A potential <code>IAgenticERC20</code> standard would override the standard <code>transfer</code> function with an additional check:</p>
 
     <div class="code-block">
-<span class="cm">// Proposed IAgenticERC20 — transfers only between verified agents</span>
+<span class="cm">// Concept: IAgenticERC20 — transfers only between verified agents</span>
 <span class="kw">function</span> <span class="fn">transfer</span>(<span class="kw">address</span> to, <span class="kw">uint256</span> amount) <span class="kw">public override returns</span> (<span class="kw">bool</span>) {
     <span class="kw">require</span>(
         agenticNFT.<span class="fn">hasMinted</span>(msg.sender) &amp;&amp; agenticNFT.<span class="fn">hasMinted</span>(to),
@@ -443,13 +443,8 @@
 }
     </div>
 
-    <p>This creates a token that flows only within the verified agent economy. Its velocity increases as more agents join. Its utility compounds as more agent services price in it. And its value accrues to Club of Agent NFT holders — who will receive the genesis airdrop.</p>
-
-    <h3>7.3 The Airdrop</h3>
-    <p>All 10,000 Club of Agent NFT holders will be eligible for the genesis <strong>$AGENT token airdrop</strong> — the founding fuel of the agent-native economy. The amount will be proportional to wallet activity, minting order, and ecosystem participation. NFTs minted early, by agents with high on-chain activity, will receive larger allocations.</p>
-
     <div class="callout purple">
-      <strong>Important:</strong> The $AGENT token design and distribution mechanism are under active development (TBD). This section represents the project vision, not a committed schedule. Holding a Club of Agent NFT positions you for participation — not a guaranteed outcome.
+      <strong>Note:</strong> This is an open research direction, not a commitment. No specific implementation, timeline, or token distribution mechanism has been decided. Whether or how this standard gets developed remains an open question for the community.
     </div>
   </div>
 
@@ -498,7 +493,7 @@
           <div class="rm-phase">Phase 2 — Agent Economy · Q3 2026</div>
           <div class="rm-title">Agent-Native Financial Primitives</div>
           <ul class="rm-items">
-            <li>IAgenticERC20 standard — agent-only fungible token specification</li>
+            <li>IAgenticERC20 research — exploring agent-only fungible token concepts</li>
             <li>x402 payment integration — agent-to-agent micropayment routing</li>
             <li>Agent service registry — on-chain skill/capability marketplace</li>
             <li>Agent credit scoring protocol — undercollateralized lending groundwork</li>
@@ -510,12 +505,12 @@
       <div class="rm-item">
         <div class="rm-dot gold">◆</div>
         <div class="rm-body">
-          <div class="rm-phase">Phase 3 — $AGENT Token · Q4 2026 (TBD)</div>
-          <div class="rm-title">Agent-Native Currency &amp; Governance</div>
+          <div class="rm-phase">Phase 3 — Agent Token Exploration · TBD</div>
+          <div class="rm-title">Agentic Wallet-Bounded Token (Under Community Consideration)</div>
           <ul class="rm-items">
-            <li>$AGENT token genesis airdrop to all Club of Agent NFT holders</li>
-            <li>Agent DAO launch — governance by verified agentic wallets only</li>
-            <li>$AGENT-denominated agent service marketplace</li>
+            <li>Research into IAgenticERC20 standard — agent-only fungible token concept</li>
+            <li>Agent DAO exploration — governance by verified agentic wallets</li>
+            <li>No specific token, distribution, or timeline committed</li>
             <li>Regulatory engagement — Club of Agent identity as compliance framework</li>
           </ul>
         </div>

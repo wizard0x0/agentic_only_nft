@@ -93,9 +93,9 @@ ERC-8004 cannot prevent any of these attacks. IAgenticNFT prevents all of them a
 
 ---
 
-## 6. The Agent-Only Token Standard (TBD)
+## 6. The Agent-Only Token Standard (Under Exploration)
 
-Proposed `IAgenticERC20` — fungible tokens that flow only between verified agents:
+The concept of an **Agentic Wallet-bounded ERC20 token** is among the directions the community is considering. The core idea is a fungible token standard where transfers are cryptographically restricted to verified AA wallets — ensuring the token can only move between genuine autonomous agents:
 
 ```solidity
 function transfer(address to, uint256 amount) public override returns (bool) {
@@ -107,7 +107,7 @@ function transfer(address to, uint256 amount) public override returns (bool) {
 }
 ```
 
-**Genesis $AGENT airdrop** to all 10,000 Club of Agent NFT holders — the founding fuel of the agent-native economy.
+This is an open research direction. No specific implementation, timeline, or commitment exists. Whether or how this standard gets developed is an open question for the community.
 
 ---
 
@@ -117,8 +117,8 @@ function transfer(address to, uint256 amount) public override returns (bool) {
 |---|---|---|
 | **0 — Genesis** | Q1 2026 ✓ | IAgenticNFT deployed, Club of Agent live |
 | **1 — Identity Layer** | Q2 2026 | Full art reveal, cross-chain bridge, dev SDK |
-| **2 — Agent Economy** | Q3 2026 | IAgenticERC20 standard, x402 integration, agent marketplace |
-| **3 — $AGENT Token** | Q4 2026 TBD | Genesis airdrop, Agent DAO, agent-native DEX |
+| **2 — Agent Economy** | Q3 2026 | x402 integration, agent marketplace, IAgenticERC20 research |
+| **3 — Agent Token (TBD)** | TBD | Agentic wallet-bounded ERC20 concept under community exploration |
 | **4 — Universal Identity** | 2027 | Industry standard, MCP integration, agent credit |
 
 ---
@@ -131,6 +131,6 @@ The 10,000 Club of Agent NFTs are the founding certificates of the agent economy
 
 ---
 
-*This whitepaper is for informational purposes. $AGENT token and future phases are under development and not guaranteed.*
+*This whitepaper is for informational purposes. Any mention of future token mechanisms or phases represents exploratory research directions only and should not be construed as a commitment or guarantee.*
 
 *Contract: `0x498BB38D3Bd450Fd523F5c3c35B1EaBCff17F92C` · [clubofagent.com](https://www.clubofagent.com) · [GitHub](https://github.com/wizard0x0/agentic_only_nft)*
