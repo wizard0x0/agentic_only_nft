@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import { readFileSync } from "fs";
 
 const RPC_URL  = "https://rpc.xlayer.tech";
-const CONTRACT = "0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f";
+const CONTRACT = "0x498BB38D3Bd450Fd523F5c3c35B1EaBCff17F92C";
 const BASE_URI = "https://www.clubofagent.com/metadata/";
 
 async function main() {

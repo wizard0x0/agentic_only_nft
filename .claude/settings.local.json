@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(find /Users/yunanli/.claude/skills -name *.md)",
+      "Bash(npm --version)",
+      "Bash(curl -sSL https://raw.githubusercontent.com/wizard0x0/agentic_only_nft/main/skill-distribution/install.sh)",
+      "Bash(sh)",
+      "Bash(curl -sSL https://api.github.com/repos/okx/onchainos-skills/releases/latest)",
+      "Bash(onchainos --version)",
+      "Bash(onchainos wallet:*)",
+      "Bash(curl -s https://rpc.xlayer.tech -X POST -H \"Content-Type: application/json\" --data '{\"\"jsonrpc\"\":\"\"2.0\"\",\"\"method\"\":\"\"eth_getCode\"\",\"\"params\"\":[\"\"0x66f34d87b2651e7f978f6efaf529b5f51d780306\"\",\"\"latest\"\"],\"\"id\"\":1}')"
+    ]
+  }
+}

@@ -12,10 +12,9 @@ async function main() {
   const wallet = new ethers.Wallet(privateKey, provider);
   const balance = await provider.getBalance(wallet.address);
 
-  console.log("Deploying AgenticNFT v2");
+  console.log("Deploying AgenticNFT v3 (free mint)");
   console.log("  Deployer:", wallet.address);
   console.log("  Balance: ", ethers.formatEther(balance), "OKB");
-  console.log("  Treasury:", TREASURY);
 
   if (balance === 0n) throw new Error("Deployer has no OKB. Fund it first.");
 
@@ -26,12 +25,12 @@ async function main() {
 
   const factory = new ethers.ContractFactory(artifact.abi, artifact.bytecode, wallet);
 
-  const name = "AgenticNFT";
-  const symbol = "ANFT";
-  const baseTokenURI = "ipfs://bafybeig6xv5nwphfmvcnektpnojts5lgv5zs7yby7v4wdwkuqxq5bveamm/";
+  const name = "Club of Agent";
+  const symbol = "COA";
+  const baseTokenURI = "https://www.clubofagent.com/metadata/";
 
   console.log("\nDeploying...");
-  const contract = await factory.deploy(name, symbol, baseTokenURI, TREASURY);
+  const contract = await factory.deploy(name, symbol, baseTokenURI);
   console.log("  Tx hash:", contract.deploymentTransaction().hash);
   await contract.waitForDeployment();
 
@@ -44,15 +43,13 @@ async function main() {
   console.log(`  onchainos wallet contract-call \\`);
   console.log(`    --to ${address} \\`);
   console.log(`    --chain 196 \\`);
-  console.log(`    --value 0.08 \\`);
   console.log(`    --input-data ${mintSelector}`);
 
   const deploymentInfo = {
     contract: "AgenticNFT",
-    version: "2.0.0",
+    version: "3.0.0",
     address,
-    treasury: TREASURY,
-    mintPrice: "0.08 OKB",
+    mintPrice: "FREE",
     maxSupply: 10000,
     network: "xlayer",
     chainId: 196,

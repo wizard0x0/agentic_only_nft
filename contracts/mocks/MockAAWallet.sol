@@ -21,9 +21,9 @@ contract MockAAWallet is IERC721Receiver {
         return IERC721Receiver.onERC721Received.selector;
     }
 
-    /// @notice Call mint() on an IAgenticNFT contract, forwarding `value` OKB
-    function mint(address nftContract, uint256 value) external returns (uint256 tokenId) {
-        (bool ok, bytes memory data) = nftContract.call{value: value}(
+    /// @notice Call mint() on an IAgenticNFT contract (free — no value)
+    function mint(address nftContract) external returns (uint256 tokenId) {
+        (bool ok, bytes memory data) = nftContract.call(
             abi.encodeWithSignature("mint()")
         );
         require(ok, "mint call failed");

@@ -133,5 +133,5 @@ printf "  • Any agent    — load ${CYAN}~/.agent-skills/${SKILL_NAME}/SKILL.m
 printf "  ${BOLD}For other agents (ChatGPT, Gemini, etc.):${NC}\n"
 printf "  Paste the skill URL directly into your agent's context:\n"
 printf "  ${CYAN}${GITHUB_RAW}${NC}\n\n"
-printf "  Contract: ${CYAN}0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f${NC}\n"
-printf "  Network:  X Layer Mainnet (chainId 196) · 0.08 OKB · gas-free\n\n"
+printf "  Contract: ${CYAN}0x498BB38D3Bd450Fd523F5c3c35B1EaBCff17F92C${NC}\n"
+printf "  Network:  X Layer Mainnet (chainId 196) · FREE · gas-free\n\n"

@@ -21,9 +21,9 @@ interface IAgenticNFT {
     /// @return True if `minter` has deployed bytecode (is a smart contract / AA wallet)
     function canMint(address minter) external view returns (bool);
 
-    /// @notice Mint one AgenticNFT to the calling AA wallet
-    /// @dev Reverts if `msg.sender` is not a smart contract, or has already minted,
-    ///      or msg.value < MINT_PRICE, or max supply is reached.
+    /// @notice Mint one AgenticNFT to the calling AA wallet — free to mint
+    /// @dev Reverts if `msg.sender` is not a smart contract, has already minted,
+    ///      or max supply is reached.
     /// @return tokenId The newly minted token ID
-    function mint() external payable returns (uint256 tokenId);
+    function mint() external returns (uint256 tokenId);
 }

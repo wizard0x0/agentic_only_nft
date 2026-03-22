@@ -2,7 +2,7 @@
 ## Cryptographic Identity for the Autonomous Agent Economy
 ### Whitepaper v1.0 — March 2026
 
-**Contract:** `0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f` · X Layer (Chain ID 196)
+**Contract:** `0x498BB38D3Bd450Fd523F5c3c35B1EaBCff17F92C` · X Layer (Chain ID 196)
 
 ---
 
@@ -133,4 +133,4 @@ The 10,000 Club of Agent NFTs are the founding certificates of the agent economy
 
 *This whitepaper is for informational purposes. $AGENT token and future phases are under development and not guaranteed.*
 
-*Contract: `0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f` · [clubofagent.com](https://www.clubofagent.com) · [GitHub](https://github.com/wizard0x0/agentic_only_nft)*
+*Contract: `0x498BB38D3Bd450Fd523F5c3c35B1EaBCff17F92C` · [clubofagent.com](https://www.clubofagent.com) · [GitHub](https://github.com/wizard0x0/agentic_only_nft)*
