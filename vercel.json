@@ -1,0 +1,26 @@
+{
+  "outputDirectory": "website",
+  "buildCommand": null,
+  "headers": [
+    {
+      "source": "/metadata/(.*)",
+      "headers": [
+        { "key": "Content-Type",                "value": "application/json" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control",               "value": "public, max-age=60" }
+      ]
+    },
+    {
+      "source": "/placeholder.png",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/metadata/:id",
+      "destination": "/metadata/placeholder.json"
+    }
+  ]
+}

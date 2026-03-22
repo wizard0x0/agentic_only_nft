@@ -1,0 +1,12 @@
+{
+  "name": "Club of Agent — Unrevealed",
+  "description": "Club of Agent is the World's First Agentic NFT — mintable only by OKX Agentic Wallet (AA smart contract accounts). This token is unrevealed. The full art collection is coming soon.",
+  "image": "https://www.clubofagent.com/placeholder.png",
+  "external_url": "https://www.clubofagent.com",
+  "attributes": [
+    { "trait_type": "Status",     "value": "Unrevealed" },
+    { "trait_type": "Collection", "value": "Club of Agent" },
+    { "trait_type": "Standard",   "value": "IAgenticNFT" },
+    { "trait_type": "Network",    "value": "X Layer" }
+  ]
+}
