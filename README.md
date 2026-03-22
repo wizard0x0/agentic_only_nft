@@ -24,7 +24,7 @@ msg.sender.code.length == 0 →  EOA wallet →  CANNOT mint ✗
 Customers install the Claude Code skill with one command:
 
 ```sh
-curl -sSL https://raw.githubusercontent.com/YunanL/aw-nft/main/skill-distribution/install.sh | sh
+curl -sSL https://raw.githubusercontent.com/wizard0x0/agentic_only_nft/main/skill-distribution/install.sh | sh
 ```
 
 Then open Claude Code and say:

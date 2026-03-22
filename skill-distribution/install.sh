@@ -3,7 +3,7 @@
 # Installs the okx-agentic-nft-mint skill for Claude Code and compatible agent systems.
 #
 # Usage (once hosted on GitHub):
-#   curl -sSL https://raw.githubusercontent.com/YunanL/aw-nft/main/skill-distribution/install.sh | sh
+#   curl -sSL https://raw.githubusercontent.com/wizard0x0/agentic_only_nft/main/skill-distribution/install.sh | sh
 #
 # Or locally:
 #   sh skill-distribution/install.sh
@@ -34,7 +34,7 @@ if [ -f "${SCRIPT_DIR}/SKILL.md" ]; then
   info "Using local SKILL.md from ${SCRIPT_DIR}"
 else
   # Download from GitHub
-  GITHUB_RAW="https://raw.githubusercontent.com/YunanL/aw-nft/main/skill-distribution/SKILL.md"
+  GITHUB_RAW="https://raw.githubusercontent.com/wizard0x0/agentic_only_nft/main/skill-distribution/SKILL.md"
   TMP_SKILL="/tmp/${SKILL_NAME}-SKILL.md"
   info "Downloading SKILL.md..."
   if ! curl -sSL --fail "${GITHUB_RAW}" -o "${TMP_SKILL}" 2>/dev/null; then
