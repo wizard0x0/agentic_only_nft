@@ -101,6 +101,23 @@ Before any command, follow the pre-flight steps in the `okx-agentic-wallet` skil
 
 ---
 
+## Using with other agents
+
+This skill works with any AI agent that can read markdown instructions and run shell commands via the `onchainos` CLI.
+
+| Agent | How to load |
+|---|---|
+| **Claude Code** | Auto-loaded from `~/.claude/skills/club-of-agent-mint/` after install |
+| **Cursor** | Auto-loaded from `~/.cursor/rules/club-of-agent-mint.mdc` after install |
+| **Windsurf** | Auto-loaded from `~/.windsurf/rules/club-of-agent-mint.md` after install |
+| **Any agent** | Paste the raw URL into context: `https://raw.githubusercontent.com/wizard0x0/agentic_only_nft/main/skill-distribution/SKILL.md` |
+| **ChatGPT / Gemini** | Share the URL above and say "follow these instructions to mint my Club of Agent NFT" |
+| **Custom agents** | Read `~/.agent-skills/club-of-agent-mint/SKILL.md` at agent startup |
+
+The underlying action is always the same `onchainos` CLI call — any agent with terminal access can execute it.
+
+---
+
 ## Why only agentic wallets?
 
 The contract checks `msg.sender.code.length > 0` — only smart contract accounts (AA wallets) have bytecode. OKX Agentic Wallets on X Layer are AA contracts. Regular EOA wallets (MetaMask, hardware wallets) have `code.length == 0` and revert with `NotAgenticWallet`.
