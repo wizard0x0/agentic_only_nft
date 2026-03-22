@@ -304,6 +304,87 @@
     /* ── DIVIDER ── */
     .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
+    /* ── REVEAL ── */
+    #reveal { padding: 6rem 0; background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(124,58,237,.07) 0%, transparent 70%); }
+    .reveal-wrap { max-width: 540px; margin: 0 auto; text-align: center; }
+    .reveal-input-row { display: flex; gap: .6rem; margin: 1.5rem 0 1rem; }
+    .reveal-input-row input {
+      flex: 1; background: var(--code-bg); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); padding: .8rem 1rem;
+      font-family: 'Space Mono', monospace; font-size: .8rem;
+      outline: none; transition: border-color .2s;
+    }
+    .reveal-input-row input:focus { border-color: var(--accent); }
+    .reveal-input-row input::placeholder { color: var(--muted); }
+    .btn-reveal {
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      color: #fff; border: none; border-radius: 10px;
+      padding: .8rem 1.4rem; font-size: .9rem; font-weight: 700;
+      cursor: pointer; transition: all .25s; white-space: nowrap;
+      font-family: 'Space Grotesk', sans-serif;
+      box-shadow: 0 0 20px rgba(124,58,237,.3);
+    }
+    .btn-reveal:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(124,58,237,.5); }
+    .btn-reveal:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    /* NFT display card */
+    .nft-reveal-card {
+      display: none; margin: 1.5rem auto 0;
+      background: var(--card); border: 1px solid rgba(124,58,237,.35);
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 0 60px rgba(124,58,237,.15);
+      animation: reveal-in .4s ease;
+    }
+    @keyframes reveal-in {
+      from { opacity:0; transform: scale(.94) translateY(12px); }
+      to   { opacity:1; transform: scale(1)  translateY(0); }
+    }
+    .nft-reveal-img {
+      width: 100%; aspect-ratio: 1;
+      background: #080810; display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid rgba(124,58,237,.2);
+    }
+    .nft-reveal-img img {
+      width: 72%; height: 72%; object-fit: contain;
+      image-rendering: pixelated;
+    }
+    .nft-reveal-body { padding: 1.4rem 1.6rem; text-align: left; }
+    .nft-reveal-name { font-size: 1.15rem; font-weight: 800; letter-spacing: -.3px; margin-bottom: .3rem; }
+    .nft-reveal-id   { font-family: 'Space Mono', monospace; font-size: .72rem; color: var(--muted); margin-bottom: 1rem; }
+    .nft-reveal-attrs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.1rem; }
+    .attr-pill {
+      background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.25);
+      border-radius: 8px; padding: .3rem .7rem;
+    }
+    .attr-pill .attr-t { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .attr-pill .attr-v { font-size: .78rem; font-weight: 700; color: #c4b5fd; }
+    .nft-reveal-links { display: flex; gap: .7rem; }
+    .nft-reveal-links a {
+      flex: 1; text-align: center; padding: .55rem; border-radius: 8px;
+      font-size: .78rem; font-weight: 600; text-decoration: none; transition: all .2s;
+    }
+    .link-explorer { background: rgba(96,165,250,.1); border: 1px solid rgba(96,165,250,.25); color: #60a5fa; }
+    .link-explorer:hover { background: rgba(96,165,250,.2); }
+    .link-meta { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.25); color: #a78bfa; }
+    .link-meta:hover { background: rgba(124,58,237,.2); }
+
+    .reveal-err {
+      background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.25);
+      color: #fca5a5; border-radius: 10px; padding: .9rem 1.1rem;
+      font-size: .85rem; margin-top: 1rem; display: none;
+    }
+    .reveal-loading {
+      color: var(--muted); font-size: .85rem; margin-top: 1rem;
+      display: none;
+    }
+    .spinner {
+      display: inline-block; width: 14px; height: 14px;
+      border: 2px solid rgba(124,58,237,.3); border-top-color: #7c3aed;
+      border-radius: 50%; animation: spin .7s linear infinite;
+      vertical-align: middle; margin-right: .4rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     /* ── FOOTER ── */
     footer {
       padding: 3rem 2rem; text-align: center;
@@ -348,6 +429,7 @@
     <a href="#collection">Collection</a>
     <a href="#mint">How to Mint</a>
     <a href="#contract">Contract</a>
+    <a href="#reveal">My NFT</a>
     <a href="#check">Verify</a>
     <a href="https://www.oklink.com/xlayer/address/0xF0f2F1f61fC4c8A4cc15a78E41102dC81434BB6f" target="_blank">Explorer ↗</a>
   </div>
@@ -654,6 +736,40 @@
 
 <hr class="divider" />
 
+<!-- REVEAL MY NFT -->
+<section id="reveal">
+  <div class="wrap reveal-wrap">
+    <div class="section-label" style="text-align:center;">Your NFT</div>
+    <div class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem);">Reveal your<br>Club of Agent NFT</div>
+    <p style="color:var(--muted);font-size:.9rem;margin-top:.6rem;">Enter your X Layer agentic wallet address to view your minted NFT.</p>
+
+    <div class="reveal-input-row">
+      <input id="reveal-addr" type="text" placeholder="0x... your agentic wallet address" spellcheck="false"
+        onkeydown="if(event.key==='Enter') revealNFT()" />
+      <button class="btn-reveal" id="reveal-btn" onclick="revealNFT()">✦ Reveal</button>
+    </div>
+
+    <div class="reveal-loading" id="reveal-loading">
+      <span class="spinner"></span> Fetching your NFT from the blockchain...
+    </div>
+    <div class="reveal-err" id="reveal-err"></div>
+
+    <div class="nft-reveal-card" id="reveal-card">
+      <div class="nft-reveal-img">
+        <img id="reveal-img" src="" alt="NFT" />
+      </div>
+      <div class="nft-reveal-body">
+        <div class="nft-reveal-name" id="reveal-name"></div>
+        <div class="nft-reveal-id"  id="reveal-id"></div>
+        <div class="nft-reveal-attrs" id="reveal-attrs"></div>
+        <div class="nft-reveal-links" id="reveal-links"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
 <!-- VERIFY -->
 <section id="check">
   <div class="wrap" style="padding: 6rem 2rem;">
@@ -770,6 +886,68 @@
     document.getElementById("addr").addEventListener("keydown", e => e.key==="Enter" && checkNFT());
     document.getElementById("elig-addr").addEventListener("keydown", e => e.key==="Enter" && checkElig());
   });
+
+  // ── REVEAL NFT ──────────────────────────────────────────────
+  async function revealNFT() {
+    const addr = document.getElementById("reveal-addr").value.trim();
+    const card  = document.getElementById("reveal-card");
+    const err   = document.getElementById("reveal-err");
+    const load  = document.getElementById("reveal-loading");
+    const btn   = document.getElementById("reveal-btn");
+
+    card.style.display = "none";
+    err.style.display  = "none";
+
+    if (!/^0x[0-9a-fA-F]{40}$/.test(addr)) {
+      err.textContent = "Invalid address — paste your full 0x... X Layer wallet address.";
+      err.style.display = "block"; return;
+    }
+
+    load.style.display = "block";
+    btn.disabled = true;
+
+    try {
+      // Check hasMinted
+      const hm = await call("0x38e21cce" + pad(addr));
+      if (!parseInt(hm, 16)) {
+        load.style.display = "none"; btn.disabled = false;
+        err.innerHTML = "No Club of Agent NFT found for this address.<br><br>Follow the <a href='#mint' style='color:#a78bfa'>5-step guide</a> to mint yours.";
+        err.style.display = "block"; return;
+      }
+
+      // Get token ID
+      const tokenId = parseInt(await call("0x077bb684" + pad(addr)), 16);
+
+      // Fetch metadata
+      const metaUrl = `https://www.clubofagent.com/metadata/${tokenId}`;
+      const meta = await fetch(metaUrl).then(r => r.json());
+
+      // Populate card
+      document.getElementById("reveal-img").src  = meta.image;
+      document.getElementById("reveal-name").textContent = meta.name;
+      document.getElementById("reveal-id").textContent   = `Token #${tokenId} · Owner: ${addr.slice(0,8)}...${addr.slice(-6)}`;
+
+      // Attributes
+      const attrsEl = document.getElementById("reveal-attrs");
+      attrsEl.innerHTML = (meta.attributes || []).map(a =>
+        `<div class="attr-pill"><div class="attr-t">${a.trait_type}</div><div class="attr-v">${a.value}</div></div>`
+      ).join("");
+
+      // Links
+      document.getElementById("reveal-links").innerHTML = `
+        <a class="link-explorer" href="https://www.oklink.com/xlayer/token/${CONTRACT}?a=${addr}" target="_blank">OKLink Explorer ↗</a>
+        <a class="link-meta"     href="${metaUrl}" target="_blank">Metadata JSON ↗</a>
+      `;
+
+      load.style.display = "none";
+      card.style.display = "block";
+    } catch(e) {
+      load.style.display = "none";
+      err.textContent = "Error fetching NFT — check your address and try again.";
+      err.style.display = "block";
+    }
+    btn.disabled = false;
+  }
 
   loadSupply();
   setInterval(loadSupply, 15000);
