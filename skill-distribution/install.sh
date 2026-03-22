@@ -62,7 +62,18 @@ cp "${SKILL_MD}" "${UNIVERSAL_DIR}/SKILL.md"
 success "Universal: ${UNIVERSAL_DIR}/SKILL.md"
 INSTALLED=$((INSTALLED+1))
 
-# ── Step 4: Cursor (.cursor/rules/) ─────────────────────────────────────────
+# ── Step 4: OpenClaw (~/.openclaw/workspace/skills/) ────────────────────────
+OPENCLAW_DIR="${HOME}/.openclaw/workspace/skills/${SKILL_NAME}"
+if [ -d "${HOME}/.openclaw" ]; then
+  mkdir -p "${OPENCLAW_DIR}"
+  cp "${SKILL_MD}" "${OPENCLAW_DIR}/SKILL.md"
+  success "OpenClaw: ${OPENCLAW_DIR}/SKILL.md"
+  INSTALLED=$((INSTALLED+1))
+else
+  skip "OpenClaw not found (${HOME}/.openclaw missing)"
+fi
+
+# ── Step 5: Cursor (.cursor/rules/) ─────────────────────────────────────────
 CURSOR_DIR="${HOME}/.cursor/rules"
 if [ -d "${HOME}/.cursor" ]; then
   mkdir -p "${CURSOR_DIR}"
@@ -115,6 +126,7 @@ printf "${GREEN}━━━━━━━━━━━━━━━━━━━━━�
 
 printf "  ${BOLD}Supported agents:${NC}\n"
 printf "  • Claude Code  — say ${CYAN}\"mint my AgenticNFT\"${NC}\n"
+printf "  • OpenClaw     — say ${CYAN}\"mint my Club of Agent NFT\"${NC}\n"
 printf "  • Cursor       — ask ${CYAN}\"mint my Club of Agent NFT\"${NC}\n"
 printf "  • Windsurf     — ask ${CYAN}\"mint my Club of Agent NFT\"${NC}\n"
 printf "  • Any agent    — load ${CYAN}~/.agent-skills/${SKILL_NAME}/SKILL.md${NC}\n\n"

@@ -108,6 +108,7 @@ This skill works with any AI agent that can read markdown instructions and run s
 | Agent | How to load |
 |---|---|
 | **Claude Code** | Auto-loaded from `~/.claude/skills/club-of-agent-mint/` after install |
+| **OpenClaw** | Auto-loaded from `~/.openclaw/workspace/skills/club-of-agent-mint/` after install |
 | **Cursor** | Auto-loaded from `~/.cursor/rules/club-of-agent-mint.mdc` after install |
 | **Windsurf** | Auto-loaded from `~/.windsurf/rules/club-of-agent-mint.md` after install |
 | **Any agent** | Paste the raw URL into context: `https://raw.githubusercontent.com/wizard0x0/agentic_only_nft/main/skill-distribution/SKILL.md` |
